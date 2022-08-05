@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework.EfMeetingsDal
 {
-    public class EfScheduledMeetingsDal:EfEntityRepositoryBase<ScheduledMeetings,CustomerManagerContext>,IScheduledMeetingsDal
+    public class EfScheduledMeetingsDal:EfEntityRepositoryBase<ScheduledMeeting,CustomerManagerContext>,IScheduledMeetingDal
     {
     }
 }

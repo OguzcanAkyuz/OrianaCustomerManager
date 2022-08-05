@@ -21,11 +21,16 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<InvestmentRelation> InvestmentRelations { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CuriousCustomer> CuriousCustomers { get; set; }
-        public DbSet<AbroadInvestmentRelations> AbroadInvestmentRelations { get; set; }
+        public DbSet<AbroadInvestmentRelation> AbroadInvestmentRelations { get; set; }
 
-        public DbSet<FinishedMeetings> FinishedMeetings { get; set; }
-        public DbSet<ScheduledMeetings> ScheduledMeetings { get; set; }
+        public DbSet<FinishedMeeting> FinishedMeetings { get; set; }
+        public DbSet<ScheduledMeeting> ScheduledMeetings { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Participant> Participants { get; set; }
 
+
+
+        //DEĞİŞTİRDİĞİN İSİMLERİ DATABASE DE TANIMLA VEYA DEĞİŞTİR.
 
 
 

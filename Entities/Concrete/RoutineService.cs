@@ -3,7 +3,7 @@ using System;
 
 namespace Entities.Concrete
 {
-    public class RoutineServices : IEntity
+    public class RoutineService : IEntity
     {
        
         public string Product { get; set; }
@@ -15,7 +15,7 @@ namespace Entities.Concrete
 
         public string Officer { get; set; }
 
-        public int RoutineServicesId { get; set; }
+        public string RoutineServiceId { get; set; }
 
 
 

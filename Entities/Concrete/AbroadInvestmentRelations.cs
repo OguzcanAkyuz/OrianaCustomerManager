@@ -2,9 +2,9 @@
 
 namespace Entities.Concrete
 {
-    public class AbroadInvestmentRelations : IEntity
+    public class AbroadInvestmentRelation : IEntity
     {
-        public int AbroadInvestorId { get; set; }
+        public string AbroadInvestorId { get; set; }
 
         public string AbroadInvestorName { get; set; }
         public string AbroadInvestorSurname { get; set; }

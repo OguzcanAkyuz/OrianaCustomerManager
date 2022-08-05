@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Entities.Concrete
 {
-    public class Customers : IEntity
+    public class Customer : IEntity
     {
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
         public string ProductName { get; set; }
         public DateTime PurchaseDate { get; set; }
         public int LicenseTerm { get; set; } //değişkeni değiştir Lisans Süresini ayarla.

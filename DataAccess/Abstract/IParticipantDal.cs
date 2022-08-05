@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IInvestmentRelationsDal: IEntityRepository<InvestmentRelation>
+    public interface IParticipantDal : IEntityRepository<Participant>
     {
     }
 }

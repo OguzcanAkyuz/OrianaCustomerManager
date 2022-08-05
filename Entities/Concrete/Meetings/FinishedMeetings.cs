@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Entities.Concrete.Meetings
 {
-    public class FinishedMeetings : IEntity
+    public class FinishedMeeting : IEntity
     {
-        public int FinishedMeetingsId { get; set; }
+        public string FinishedMeetingsId { get; set; }
         public string CustomerInformation { get; set; }
-        public string Participants { get; set; }
+        public string ParticipantsId { get; set; }
 
         public string MeetingSubject { get; set; }
         public bool MeetingResult { get; set; }

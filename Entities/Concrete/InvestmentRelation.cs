@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Entities.Concrete
 {
-    public class InvestmentRelations : IEntity
+    public class InvestmentRelation : IEntity
     {
-        public int InvestmentRelationsId { get; set; }
+        public string InvestmentRelationId { get; set; }
         public string InvestorName { get; set; }
         public string InvestorSurname { get; set; }
 

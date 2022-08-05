@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Abstract.IMeetingsDal
 {
-    public interface IScheduledMeetingsDal : IEntityRepository<ScheduledMeetings>
+    public interface IScheduledMeetingDal : IEntityRepository<ScheduledMeeting>
     {
     }
 }

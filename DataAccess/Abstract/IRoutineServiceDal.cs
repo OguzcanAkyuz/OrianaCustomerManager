@@ -3,7 +3,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface IRoutineServicesDal : IEntityRepository<RoutineServices>
+    public interface IRoutineServiceDal : IEntityRepository<RoutineService>
     {
 
     }

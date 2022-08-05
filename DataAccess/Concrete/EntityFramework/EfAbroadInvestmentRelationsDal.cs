@@ -8,7 +8,7 @@ using DataAccess.Abstract;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfAbroadInvestmentRelationsDal : EfEntityRepositoryBase <AbroadInvestmentRelations , CustomerManagerContext  >,IAbroadInvestmentRelationsDal
+    public class EfAbroadInvestmentRelationsDal : EfEntityRepositoryBase <AbroadInvestmentRelation, CustomerManagerContext>,IAbroadInvestmentRelationDal
     {
     }
 }

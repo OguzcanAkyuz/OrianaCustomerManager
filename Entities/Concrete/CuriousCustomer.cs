@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Entities.Concrete
 {
-    public class CuriousCustomers : IEntity
+    public class CuriousCustomer : IEntity
     {
-        public int CuriousCustomerId { get; set; }
+        public string CuriousCustomerId { get; set; }
         public string CuriousCustomerName { get; set; }
         public string CuriousCustomerSurname { get; set; }
 
@@ -21,6 +21,7 @@ namespace Entities.Concrete
 
         public string Note { get; set; }
         public DateTime DateOfUpload { get; set; }
+        public string ProductId { get; set; } //Database Ekle
 
 
 
