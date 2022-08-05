@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using System;
 
 namespace Entities.Concrete
 {
@@ -9,7 +10,7 @@ namespace Entities.Concrete
         public string AbroadInvestorName { get; set; }
         public string AbroadInvestorSurname { get; set; }
 
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         public string Email { get; set; }
         public string Adress { get; set; }
@@ -18,7 +19,7 @@ namespace Entities.Concrete
         public string Position { get; set; }
 
         public string Note { get; set; }
-        public float DateOfUpload { get; set; }
+        public DateTime DateOfUpload { get; set; }
 
         public string Country { get; set; }
 

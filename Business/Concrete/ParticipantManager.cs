@@ -26,7 +26,7 @@ namespace Business.Concrete
 
         public IResult Add(Participant participant)
         {
-            IResult result= BusinessRules.Run(CheckIfParticipantIdExitis(participant.ParticipantId)));
+            IResult result= BusinessRules.Run(CheckIfParticipantIdExitis(participant.ParticipantId));
             if (result == null)
             {
                 return new ErrorResult("Id Boş olamaz");

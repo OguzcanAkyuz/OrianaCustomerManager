@@ -18,7 +18,7 @@ namespace Entities.Concrete
         public string Email { get; set; }
         public string Position { get; set; }
 
-        public string Product { get; set; }
+        public string ProductId { get; set; }
 
     }
 }

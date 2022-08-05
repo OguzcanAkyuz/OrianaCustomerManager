@@ -10,11 +10,11 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class PotentialCustomersManager : IPotentialCustomerService
+    public class PotentialCustomerManager : IPotentialCustomerService
     {
         IPotentialCustomerDal _potentialCustomer;
 
-        public PotentialCustomersManager(IPotentialCustomerDal potentialCustomersDal)
+        public PotentialCustomerManager(IPotentialCustomerDal potentialCustomersDal)
         {
             _potentialCustomer = potentialCustomersDal;
         }

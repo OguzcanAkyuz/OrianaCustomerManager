@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32611.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{2C511155-5EE4-4D4E-8BE0-A40ECAE7C020}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{73AD5276-489A-41E8-A1FF-4AEADDF9A4CF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{B4D8641A-059E-46C1-A990-07761529141D}"
@@ -13,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{92951B5A-F642-4D1E-960A-160B8666ADDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{C34E6E43-2D8D-46C5-BA13-E6560435112B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{C34E6E43-2D8D-46C5-BA13-E6560435112B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2C511155-5EE4-4D4E-8BE0-A40ECAE7C020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C511155-5EE4-4D4E-8BE0-A40ECAE7C020}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C511155-5EE4-4D4E-8BE0-A40ECAE7C020}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C511155-5EE4-4D4E-8BE0-A40ECAE7C020}.Release|Any CPU.Build.0 = Release|Any CPU
 		{73AD5276-489A-41E8-A1FF-4AEADDF9A4CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{73AD5276-489A-41E8-A1FF-4AEADDF9A4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73AD5276-489A-41E8-A1FF-4AEADDF9A4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework.EfMeetingsDal
 {
-    public class EfFinishedMeetings : EfEntityRepositoryBase<FinishedMeeting,CustomerManagerContext>,IFinishedMeetingDal
+    public class EfFinishedMeeting : EfEntityRepositoryBase<FinishedMeeting,CustomerManagerContext>,IFinishedMeetingDal
     {
     }
 }
