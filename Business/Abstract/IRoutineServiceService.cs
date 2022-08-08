@@ -14,8 +14,8 @@ namespace Business.Abstract
         IDataResult<RoutineService> GetByOfficer(string officer); 
 
         IResult Add(RoutineService routineServices);
-        IResult Delete(string routineServicesId);
-        IResult Update(RoutineService routineServices);
+        IResult Delete(RoutineService routineService);
+        IResult Update(RoutineService routineService);
 
     }
 }

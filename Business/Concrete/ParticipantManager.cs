@@ -13,7 +13,13 @@ namespace Business.Concrete
 {
     public class ParticipantManager : IParticipantService
     {
-        IParticipantDal _participantDal;
+        private readonly IParticipantDal _participantDal;
+
+        public ParticipantManager(IParticipantDal participantDal)
+        {
+            _participantDal = participantDal;
+
+        }
         public IDataResult<List<Participant>> GetAll()
         {
             return new SuccessDataResult<List<Participant>>(_participantDal.GetAll(),Messages.ParticipantListed);
@@ -21,38 +27,29 @@ namespace Business.Concrete
 
         public IDataResult<Participant> GetByParticipantId(string id)
         {
-            return new SuccessDataResult<Participant>(_participantDal.Get(pm => pm.ParticipantId == id));
+            return new SuccessDataResult<Participant>(_participantDal.Get(pm => pm.Id == id));
         }
 
         public IResult Add(Participant participant)
         {
-            IResult result= BusinessRules.Run(CheckIfParticipantIdExitis(participant.ParticipantId));
-            if (result == null)
-            {
-                return new ErrorResult("Id Boş olamaz");
-            }
+            
+            _participantDal.Add(participant);
             return new SuccessResult();
         }
 
         public IResult Update(Participant participant)
         {
-            throw new NotImplementedException();
+            _participantDal.Update(participant);
+            return new SuccessResult(Messages.Update);
         }
 
         public IResult Delete(Participant participant)
         {
-            throw new NotImplementedException();
+            _participantDal.Delete(participant);
+            return new SuccessResult(Messages.Deleted);      
         }
 
-        private IResult CheckIfParticipantIdExitis(string participantId)
-        {
-            var result =_participantDal.GetAll(pr=>pr.ParticipantId == participantId);
-            if(result == null)
-            {
-                return new ErrorResult(Messages.ParticipantError);
-            }
-            return new SuccessResult();
-        }
+       
 
    
     }

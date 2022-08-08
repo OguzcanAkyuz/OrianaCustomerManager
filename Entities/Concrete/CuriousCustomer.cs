@@ -1,4 +1,6 @@
 ﻿using Core.Entities;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +9,10 @@ namespace Entities.Concrete
 {
     public class CuriousCustomer : IEntity
     {
-        public string CuriousCustomerId { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+        
         public string CuriousCustomerName { get; set; }
         public string CuriousCustomerSurname { get; set; }
 
@@ -21,7 +26,7 @@ namespace Entities.Concrete
 
         public string Note { get; set; }
         public DateTime DateOfUpload { get; set; }
-        public string ProductId { get; set; } //Database Ekle
+      
 
 
 

@@ -1,13 +1,5 @@
-using Business.Abstract;
-using Business.Abstract.MeetingsService;
-using Business.Concrete;
-using Business.Concrete.MeetingsManager;
 using Core.Utilities.Security.Encyption;
 using Core.Utilities.Security.Jwt;
-using DataAccess.Abstract;
-using DataAccess.Abstract.IMeetingsDal;
-using DataAccess.Concrete.EntityFramework;
-using DataAccess.Concrete.EntityFramework.EfMeetingsDal;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,22 +29,22 @@ namespace WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
-            
 
-            services.AddSingleton<ICustomerService, CustomerManager>();
-            services.AddSingleton<ICustomerDal, EfCustomerDal>();
-            services.AddSingleton<IRoutineServiceService, RoutineServiceManager>();
-            services.AddSingleton<IRoutineServiceDal, EfRoutineServiceDal>();
-            services.AddSingleton<ICustomerService, CustomerManager>();
-            services.AddSingleton<ICustomerDal, EfCustomerDal>();
-            services.AddSingleton<IScheduledMeetingService, ScheduledMeetingManager>();
-            services.AddSingleton<IScheduledMeetingDal, EfScheduledMeetingDal>();
+
+            //services.AddSingleton<ICustomerService, CustomerManager>();
+            //services.AddSingleton<ICustomerDal, EfCustomerDal>();
+            //services.AddSingleton<IRoutineServiceService, RoutineServiceManager>();
+            //services.AddSingleton<IRoutineServiceDal, EfRoutineServiceDal>();
+            //services.AddSingleton<ICustomerService, CustomerManager>();
+            //services.AddSingleton<ICustomerDal, EfCustomerDal>();
+            //services.AddSingleton<IScheduledMeetingService, ScheduledMeetingManager>();
+            //services.AddSingleton<IScheduledMeetingDal, EfScheduledMeetingDal>();
 
 
             services.AddCors();
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
-            
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {

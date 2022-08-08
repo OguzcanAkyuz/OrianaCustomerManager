@@ -13,7 +13,7 @@ namespace Business.Concrete
     public class RoutineServiceManager : IRoutineServiceService
     {
 
-        IRoutineServiceDal _routineServiceDal;
+        private readonly IRoutineServiceDal _routineServiceDal;
 
         public RoutineServiceManager(IRoutineServiceDal routineServicesDal)
         {
@@ -41,41 +41,25 @@ namespace Business.Concrete
             return new SuccessDataResult<RoutineService>(_routineServiceDal.Get(r => r.Officer == officer));
         }
 
-        [CacheRemoveAspect("IRoutineService.Get")]
-        public IResult Update(RoutineService routineServices)
+    
+        public IResult Update(RoutineService routineService)
         {
-            var result = _routineServiceDal.GetAll(r => r.RoutineServiceId == routineServices.RoutineServiceId).Count;
-            if(result <= 0)
-            {
-                return new ErrorResult(Messages.RoutineServicesError);
-            }
-            return new SuccessResult("");
+            _routineServiceDal.Update(routineService);
+            return new SuccessResult(Messages.SuccesResult);
         }
 
         public IResult Add(RoutineService routineServices)
         {
-            IResult result = BusinessRules.Run(CheckIfRoutineServicesExitis(routineServices.RoutineServiceId));
-            if (result == null)
-            {
-                return new ErrorResult("Rutin Servis Id boş olamaz.");
-            }
             _routineServiceDal.Add(routineServices);
             return new SuccessResult(Messages.SuccesResult);
         }
 
-        private IResult CheckIfRoutineServicesExitis(string routineServiceId)
-        {
-            var result = _routineServiceDal.GetAll(r => r.RoutineServiceId == routineServiceId).Count;
-            if (result > 0)
-            {
-                return new SuccessResult();
-            }
-            return new ErrorResult(Messages.CustomerIdError);
-        }
 
-        public IResult Delete(string routineServicesId)
+        public IResult Delete(RoutineService routineService)
         {
-            throw new System.NotImplementedException();
+            _routineServiceDal.Delete(routineService);
+            return new SuccessResult(Messages.Deleted);
+
         }
 
     }

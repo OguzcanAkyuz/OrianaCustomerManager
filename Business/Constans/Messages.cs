@@ -27,6 +27,8 @@ namespace Business.Constans
         public static string CuriousCustomerListed = "Ciddi Alıcılar Listelendi";
         public static string ScheduledMeetingListed = "Planlanmış Toplantılar Listelendi";
         public static string FinishedMeetingListed = "Bitmiş Toplantılar Listelendi";
+        public static string Deleted = "Başarıyla Silindi";
+        public static string Update = "Güncellendi.";
 
 
     }

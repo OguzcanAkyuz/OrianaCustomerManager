@@ -26,46 +26,34 @@ namespace Business.Concrete
 
         public IDataResult<List<PotentialCustomer>> GetAllByPotentialCustomerId(string Id)
         {
-            return new SuccessDataResult<List<PotentialCustomer>>(_potentialCustomer.GetAll(pc => pc.PotentialCustomerId == Id));
+            return new SuccessDataResult<List<PotentialCustomer>>(_potentialCustomer.GetAll(pc => pc.Id == Id));
         }
 
         public IDataResult<PotentialCustomer> GetByPotentialCustomerId(string potentialCustomerId)
         {
-            return new SuccessDataResult<PotentialCustomer>(_potentialCustomer.Get(pc => pc.PotentialCustomerId == potentialCustomerId));
+            return new SuccessDataResult<PotentialCustomer>(_potentialCustomer.Get(pc => pc.Id == potentialCustomerId));
         }
-        public IResult Add(PotentialCustomer potentialCustomers)
+        public IResult Add(PotentialCustomer potentialCustomer)
         {
-            IResult result = BusinessRules.Run(CheckIfPotentialCustomerIdExitis(potentialCustomers.PotentialCustomerId));
-            if(result != null)
-            {
-                return new ErrorResult(Messages.PotentialCustomersError);
-            
-            }
-            _potentialCustomer.Add(potentialCustomers);
+           
+            _potentialCustomer.Add(potentialCustomer);
             return new SuccessResult(Messages.CustomerAdded);
 
 
         }
 
-        public IResult Delete(PotentialCustomer potentialCustomers)
+        public IResult Delete(PotentialCustomer potentialCustomer)
         {
-            throw new NotImplementedException();
+            _potentialCustomer.Update(potentialCustomer);
+            return new SuccessResult(Messages.Deleted);
         }
 
-        public IResult Update(PotentialCustomer potentialCustomers)
+        public IResult Update(PotentialCustomer potentialCustomer)
         {
-            throw new NotImplementedException();
+            _potentialCustomer.Update(potentialCustomer);
+            return new SuccessResult(Messages.Update);
         }
 
-        private IResult CheckIfPotentialCustomerIdExitis(string potentialCustomerId)
-        {
-            var result = _potentialCustomer.GetAll(pc => pc.PotentialCustomerId == potentialCustomerId).Count;
-            if(result <= 0)
-            {
-                return new ErrorResult(Messages.PotentialCustomersError);
-
-            }
-            return new SuccessResult();
-        }
+   
     }
 }

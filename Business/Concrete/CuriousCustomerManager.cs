@@ -1,20 +1,17 @@
 ﻿using Business.Abstract;
 using Business.Constans;
-using Castle.Core.Resource;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Business.Concrete
 {
     public class CuriousCustomerManager : ICuriousCustomerService
     {
-        ICuriousCustomerDal _curiousCustomerDal;
+        private readonly ICuriousCustomerDal _curiousCustomerDal;
 
         public CuriousCustomerManager(ICuriousCustomerDal curiousCustomerDal)
         {
@@ -22,23 +19,15 @@ namespace Business.Concrete
         }
 
         public IResult Add(CuriousCustomer curiousCustomer)
-{
-            IResult result = BusinessRules.Run(CheckIfCuriousCustomerIdExitis(curiousCustomer.CuriousCustomerId));
-
-            if (result != null)
-            {
-                return new ErrorResult("Id Kısmı Boş Olamaz.");
-            }
+        {
+            
             _curiousCustomerDal.Add(curiousCustomer);
 
             return new SuccessResult(Messages.CustomerAdded); //mesaj tanımla
 
         }
 
-        public IResult Delete(CuriousCustomer curiousCustomer)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public IDataResult<List<CuriousCustomer>> GetAll()
         {
@@ -47,30 +36,28 @@ namespace Business.Concrete
 
         public IDataResult<List<CuriousCustomer>> GetAllByCuriousProductId(string productId)
         {
-            return new SuccessDataResult<List<CuriousCustomer>>(_curiousCustomerDal.GetAll(cp => cp.ProductId == productId));
+            return new SuccessDataResult<List<CuriousCustomer>>(_curiousCustomerDal.GetAll(cp => cp.Id == productId));
         }
 
         public IDataResult<CuriousCustomer> GetByCuriousCustomerId(string curiousCustomerId)
         {
-            return new SuccessDataResult<CuriousCustomer>(_curiousCustomerDal.Get(cp => cp.CuriousCustomerId == curiousCustomerId));
+            return new SuccessDataResult<CuriousCustomer>(_curiousCustomerDal.Get(cp => cp.Id == curiousCustomerId));
         }
 
+        public IResult Delete(CuriousCustomer curiousCustomer)
+        {
+            _curiousCustomerDal.Delete(curiousCustomer);
+            return new SuccessResult(Messages.Deleted);
+        }
         public IResult Update(CuriousCustomer curiousCustomer)
         {
-            throw new NotImplementedException();
+
+            _curiousCustomerDal.Update(curiousCustomer);
+            return new SuccessResult(Messages.Update);
         }
 
-        private IResult CheckIfCuriousCustomerIdExitis(string curiousCustomerId)
-        {
-            var result = _curiousCustomerDal.GetAll(c => c.CuriousCustomerId == curiousCustomerId).Count;
-            if (result <= 0)
-            {
-                return new ErrorResult(Messages.CustomerIdError); //mesaj tanımla 
-
-            }
-            return new SuccessResult();
 
 
         }
     }
-}
+

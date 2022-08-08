@@ -1,12 +1,16 @@
 ﻿using Core.Entities;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 using System;
 
 namespace Entities.Concrete
 {
     public class RoutineService : IEntity
     {
-       
-        public string Product { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+      
         public string CustomerName { get; set; }
 
         public string RoutineServiceDescription { get; set; }

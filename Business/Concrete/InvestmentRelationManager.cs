@@ -12,7 +12,7 @@ namespace Business.Concrete
 {
     public class InvestmentRelationManager : IInvestmentRelationService
     {
-        IInvestmentRelationDal _ınvestmentRelationDal;
+        private readonly IInvestmentRelationDal _ınvestmentRelationDal;
 
         public InvestmentRelationManager(IInvestmentRelationDal ınvestmentRelationDal)
         {
@@ -21,11 +21,7 @@ namespace Business.Concrete
 
         public IResult Add(InvestmentRelation ınvestmentRelation)
         {
-            IResult result = BusinessRules.Run(CheckIfInvestmentRelationExitis(ınvestmentRelation.InvestmentRelationId));
-            if ( result!= null)
-            {
-                return new ErrorResult("Başarısız");       //Parantez içini değiştir.
-            }
+           
             _ınvestmentRelationDal.Add(ınvestmentRelation);
             return new SuccessResult(Messages.InvestmentRelationsSuccess);
         }
@@ -49,27 +45,21 @@ namespace Business.Concrete
 
         public IResult Update(InvestmentRelation ınvestmentRelation)
         {
-            throw new NotImplementedException();
+            _ınvestmentRelationDal.Update(ınvestmentRelation);
+            return new SuccessResult(Messages.Update);
         }
 
         public IResult Delete(InvestmentRelation ınvestmentRelation)
         {
-            throw new NotImplementedException();
+            _ınvestmentRelationDal.Delete(ınvestmentRelation);
+            return new SuccessResult(Messages.Deleted);
         }
 
 
-        private IResult CheckIfInvestmentRelationExitis(string ınvestmentRelationId)
-        {
-            var result = _ınvestmentRelationDal.GetAll(ır => ır.InvestmentRelationId == ınvestmentRelationId).Count;
-            if(result <= 0)
-            {
-                return new ErrorResult(Messages.InvestmentRelationsError);
-            }
-            return new SuccessResult();
 
 
         }
 
     }
 
-}
+

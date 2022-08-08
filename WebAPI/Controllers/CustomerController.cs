@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using DataAccess.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -7,11 +9,24 @@ namespace WebAPI.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        ICustomerService _customerService;
+       private readonly ICustomerService _customerService;
+     
         
         public CustomerController(ICustomerService customerService)
         {
             _customerService = customerService;
+           
+        }
+
+        [HttpPost("Add")]
+        public IActionResult Add(Customer customer)
+        {
+            var result = _customerService.Add(customer);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
 
@@ -37,4 +52,8 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
     }
+
+     
+        
 }
+

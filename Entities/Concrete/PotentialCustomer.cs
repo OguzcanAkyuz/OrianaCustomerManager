@@ -1,13 +1,16 @@
 ﻿using Core.Entities;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Entities.Concrete
 {
     public class PotentialCustomer : IEntity
     {
-        public string PotentialCustomerId { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+       
         public string PotentialCustomerName { get; set; }
         public string PotentialCustomerSurname { get; set; }
 

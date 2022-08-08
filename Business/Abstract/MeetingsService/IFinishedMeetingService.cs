@@ -13,10 +13,10 @@ namespace Business.Abstract.MeetingsService
         IDataResult<List<FinishedMeeting>> GetByFinishedMeetingId(string finishedMeetingId);
         IDataResult<List<FinishedMeeting>> GetAllParticiPants(string participant);
 
-        IResult Add(FinishedMeeting finishedMeetings);
-        IResult Update(FinishedMeeting finishedMeetings);
+        IResult Add(FinishedMeeting finishedMeeting);
+        IResult Update(FinishedMeeting finishedMeeting);
 
-        IResult Delete(int finishedMeetingsId);
+        IResult Delete(FinishedMeeting finishedMeeting);
 
     }
 }

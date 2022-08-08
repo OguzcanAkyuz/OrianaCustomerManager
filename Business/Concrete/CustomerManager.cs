@@ -11,7 +11,7 @@ namespace Business.Concrete
 {
     public class CustomerManager : ICustomerService
     {
-        ICustomerDal _customerDal;
+        private readonly ICustomerDal _customerDal;
 
 
         public CustomerManager(ICustomerDal customersDal)
@@ -21,12 +21,8 @@ namespace Business.Concrete
 
         public IResult Add(Customer customer)
         {
-            IResult result = BusinessRules.Run(CheckIfCustomerIdExitis(customer.CustomerId));
+       
 
-            if (result != null)
-            {
-                return new ErrorResult("Id Kısmı Boş Olamaz.");
-            }
             _customerDal.Add(customer);
 
             return new SuccessResult(Messages.CustomerAdded);
@@ -35,7 +31,7 @@ namespace Business.Concrete
         }
         public IDataResult<Customer> GetByCustomerId(string customerId) //iş kuralı ekle IResult.
         {
-            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.CustomerId == customerId));
+            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.Id == customerId));
         }
 
         public IDataResult<List<Customer>> GetAll()
@@ -46,7 +42,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Customer>> GetAllByCustomersId(string id)
         {
-            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(c => c.CustomerId == id));
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(c => c.Id == id));
         }
 
         public IDataResult<List<Customer>> GetAllCompanyBusinessArea(string companyBusinessArea)
@@ -59,27 +55,20 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(c => c.PurchasePrice >= min && c.PurchasePrice <= max));
         }
 
-        private IResult CheckIfCustomerIdExitis(string customerId)
+        
+        public IResult Delete(Customer customer)
         {
-            var result = _customerDal.GetAll(c => c.CustomerId == customerId).Count;
-            if (result <= 0)
-            {
-                return new ErrorResult(Messages.CustomerIdError);
 
-            }
-            return new SuccessResult();
-
-
-
-        }
-        public IResult Delete(Customer customers)
-        {
-            throw new NotImplementedException();
+            _customerDal.Delete(customer);
+            return new SuccessResult(Messages.Deleted);
         }
 
-        public IResult Update(Customer customers)
+        public IResult Update(Customer customer)
         {
-            throw new NotImplementedException();
+          
+            _customerDal.Update(customer);
+
+            return new SuccessResult(Messages.Update);
         }
     }
 }

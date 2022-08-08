@@ -1,4 +1,6 @@
 ﻿using Core.Entities;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +9,10 @@ namespace Entities.Concrete.Meetings
 {
     public class FinishedMeeting : IEntity
     {
-        public string FinishedMeetingsId { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+       
         public string CustomerInformation { get; set; }
         public string ParticipantsId { get; set; }
 

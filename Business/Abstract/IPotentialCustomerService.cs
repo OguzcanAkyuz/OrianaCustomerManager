@@ -13,10 +13,10 @@ namespace Business.Abstract
         IDataResult<PotentialCustomer> GetByPotentialCustomerId(string potentialCustomerId);
 
 
-        IResult Add(PotentialCustomer potentialCustomers);
+        IResult Add(PotentialCustomer potentialCustomer);
 
-        IResult Update(PotentialCustomer potentialCustomers);
-        IResult Delete(PotentialCustomer potentialCustomers);
+        IResult Update(PotentialCustomer potentialCustomer);
+        IResult Delete(PotentialCustomer potentialCustomer);
 
 
 

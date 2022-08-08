@@ -13,8 +13,8 @@ namespace Business.Abstract
         IDataResult<List<Customer>> GetAllPurchasePrice(decimal min, decimal max);
         IDataResult<List<Customer>> GetAllCompanyBusinessArea(string companyBusinessArea);
         IDataResult<Customer> GetByCustomerId(string customerId);
-        IResult Add(Customer customers);
-        IResult Update(Customer customers);
-        IResult Delete(Customer customers);
+        IResult Add(Customer customer);
+        IResult Update(Customer customer);
+        IResult Delete(Customer customer);
     }
 }

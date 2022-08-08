@@ -1,0 +1,59 @@
+﻿using Business.Abstract.MeetingsService;
+using Business.Constans;
+using Core.Utilities.Business;
+using Core.Utilities.Results;
+using DataAccess.Abstract.IMeetingsDal;
+using Entities.Concrete.Meetings;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Business.Concrete.MeetingsManager
+{
+    public class FinishedMeetingManager : IFinishedMeetingService
+    {
+        private readonly IFinishedMeetingDal _finishedMeetingDal;
+
+        public FinishedMeetingManager(IFinishedMeetingDal finishedMeetingDal)
+        {
+            _finishedMeetingDal = finishedMeetingDal;
+        }
+
+        public IResult Add(FinishedMeeting finishedMeeting)
+        {
+           
+            _finishedMeetingDal.Add(finishedMeeting);
+            return new SuccessResult(Messages.SuccesResult);
+        }
+
+        
+
+        public IDataResult<List<FinishedMeeting>> GetAll()
+        {
+            return new SuccessDataResult<List<FinishedMeeting>>(_finishedMeetingDal.GetAll(), Messages.FinishedMeetingListed);
+        }
+
+       
+
+        public IDataResult<List<FinishedMeeting>> GetAllParticiPants(string participantId)
+        {
+            return new SuccessDataResult<List<FinishedMeeting>>(_finishedMeetingDal.GetAll(f => f.Id == participantId));
+        }
+
+        public IDataResult<List<FinishedMeeting>> GetByFinishedMeetingId(string finishedMeetingId)
+        {
+            return new SuccessDataResult<List<FinishedMeeting>>(_finishedMeetingDal.GetAll(f => f.Id == finishedMeetingId));
+        }
+   
+        public IResult Delete(FinishedMeeting finishedMeeting)
+        {
+            _finishedMeetingDal.Delete(finishedMeeting);
+            return new SuccessResult(Messages.Deleted);
+        }
+        public IResult Update(FinishedMeeting finishedMeeting)
+        {
+            _finishedMeetingDal.Update(finishedMeeting);
+            return new SuccessResult(Messages.Update);
+        }
+    }
+}

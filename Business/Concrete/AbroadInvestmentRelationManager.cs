@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constans;
+using Castle.Core.Resource;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -12,55 +13,53 @@ namespace Business.Concrete
 {
     public class AbroadInvestmentRelationManager : IAbroadInvestmentRelationService
     {
-        IAbroadInvestmentRelationDal _abroadInvestmentRelationDal;
+        private readonly IAbroadInvestmentRelationDal _abroadInvestmentRelationDal;
 
         public AbroadInvestmentRelationManager(IAbroadInvestmentRelationDal abroadInvestmentRelationDal)
         {
             _abroadInvestmentRelationDal = abroadInvestmentRelationDal;
 
         }
+
         public IResult Add(AbroadInvestmentRelation abroadInvestmentRelations)
         {
-            IResult result = BusinessRules.Run(CheckIfAbroadInvestmentRelationExitis(abroadInvestmentRelations.AbroadInvestorId));
-            if (result != null)
-            {
-                return new ErrorResult("Başarısız");       //Parantez içini değiştir.
-            }
             _abroadInvestmentRelationDal.Add(abroadInvestmentRelations);
-            return new SuccessResult(Messages.InvestmentRelationsSuccess);
+
+            return new SuccessResult(Messages.SuccesResult);
         }
 
-        public IResult Delete(AbroadInvestmentRelation abroadInvestmentRelations)
+           
+
+            public IDataResult<List<AbroadInvestmentRelation>> GetAll()
+            {
+                return new SuccessDataResult<List<AbroadInvestmentRelation>>(_abroadInvestmentRelationDal.GetAll(), Messages.InvestmentRelationsListed); //mesajı düzelt
+            }
+
+
+            public IDataResult<AbroadInvestmentRelation> GetByAbroadInvestmentRelationsId(string abroadInvestmentRelationId)
+            {
+                return new SuccessDataResult<AbroadInvestmentRelation>(_abroadInvestmentRelationDal.Get(ar => ar.Id == abroadInvestmentRelationId));
+            }
+
+
+        public IResult Delete(AbroadInvestmentRelation abroadInvestmentRelation)
         {
-            throw new NotImplementedException();
+            _abroadInvestmentRelationDal.Delete(abroadInvestmentRelation);
+            return new SuccessResult(Messages.Deleted);
         }
 
-        public IDataResult<List<AbroadInvestmentRelation>> GetAll()
-        {
-            return new SuccessDataResult<List<AbroadInvestmentRelation>>(_abroadInvestmentRelationDal.GetAll(), Messages.InvestmentRelationsListed); //mesajı düzelt
-        }
-
-       
-        public IDataResult<AbroadInvestmentRelation> GetByAbroadInvestmentRelationsId(string abroadInvestmentRelationId)
-        {
-            return new SuccessDataResult<AbroadInvestmentRelation>(_abroadInvestmentRelationDal.Get(ar => ar.AbroadInvestorId == abroadInvestmentRelationId));
-        }
 
         public IResult Update(AbroadInvestmentRelation abroadInvestmentRelation)
-        {
-            throw new NotImplementedException();
-        }
-
-        private IResult CheckIfAbroadInvestmentRelationExitis(string abroadInvestmentRelationId)
-{
-            var result = _abroadInvestmentRelationDal.GetAll(ar => ar.AbroadInvestorId == abroadInvestmentRelationId).Count;
-            if (result <= 0)
             {
-                return new ErrorResult(Messages.InvestmentRelationsError); //mesajı düzelt
-            }
-            return new SuccessResult();
+            _abroadInvestmentRelationDal.Update(abroadInvestmentRelation);
+            return new SuccessResult(Messages.Update);
+        }
+
+
 
 
         }
+
     }
-}
+
+
