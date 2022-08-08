@@ -1,4 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Abstract.MeetingsService;
+using Entities.Concrete;
+using Entities.Concrete.Meetings;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -25,6 +28,16 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpPost("update")]
+        public IActionResult Update(RoutineService routineService)
+        {
+            var result = _routineServiceService.Update(routineService);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
 
+        }
     }
 }

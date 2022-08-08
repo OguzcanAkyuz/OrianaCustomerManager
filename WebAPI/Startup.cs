@@ -8,15 +8,32 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Quartz;
+using Quartz.Impl;
+using System.Collections.Specialized;
 
 namespace WebAPI
 {
     public class Startup
     {
+        private IScheduler _quartzScheduler;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _quartzScheduler = ConfigureQuartz();
         }
+        public IScheduler ConfigureQuartz()
+        {
+            NameValueCollection props = new NameValueCollection
+            {
+                {"quartz.serializer.type","binary" },
+            };
+            StdSchedulerFactory factory = new StdSchedulerFactory(props);
+            var scheduler = factory.GetScheduler().Result;
+            scheduler.Start().Wait();
+            return scheduler;
+        }
+
 
         public IConfiguration Configuration { get; }
 
@@ -30,15 +47,8 @@ namespace WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
 
-
-            //services.AddSingleton<ICustomerService, CustomerManager>();
-            //services.AddSingleton<ICustomerDal, EfCustomerDal>();
-            //services.AddSingleton<IRoutineServiceService, RoutineServiceManager>();
-            //services.AddSingleton<IRoutineServiceDal, EfRoutineServiceDal>();
-            //services.AddSingleton<ICustomerService, CustomerManager>();
-            //services.AddSingleton<ICustomerDal, EfCustomerDal>();
-            //services.AddSingleton<IScheduledMeetingService, ScheduledMeetingManager>();
-            //services.AddSingleton<IScheduledMeetingDal, EfScheduledMeetingDal>();
+            services.AddSingleton(provider => _quartzScheduler);
+    
 
 
             services.AddCors();
@@ -60,6 +70,10 @@ namespace WebAPI
                     };
                 });
 
+        }
+        private void OnShutdown()
+        {
+            if (!_quartzScheduler.IsShutdown) _quartzScheduler.Shutdown();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

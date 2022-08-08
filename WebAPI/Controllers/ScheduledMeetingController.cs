@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Abstract.MeetingsService;
+using Entities.Concrete.Meetings;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -20,6 +21,17 @@ namespace WebAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _scheduledMeetingService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+        [HttpPost("update")]
+        public IActionResult Update(ScheduledMeeting scheduledMeeting)
+        {
+            var result = _scheduledMeetingService.Update(scheduledMeeting);
             if (result.Success)
             {
                 return Ok(result);
