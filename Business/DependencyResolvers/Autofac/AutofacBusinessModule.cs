@@ -1,8 +1,10 @@
 ﻿using Autofac;
+using Autofac.Core;
 using Business.Abstract;
 using Business.Abstract.MeetingsService;
 using Business.Concrete;
 using Business.Concrete.MeetingsManager;
+using Core.CrossCuttingConcerns.EMailService;
 using DataAccess.Abstract;
 using DataAccess.Abstract.IMeetingsDal;
 using DataAccess.Concrete.MongoDB;
@@ -34,6 +36,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<MongoDB_ParticipantDal>().As<IParticipantDal>().SingleInstance();
             builder.RegisterType<MongoDB_InvestmentRelationDal>().As<IInvestmentRelationDal>().SingleInstance();
             builder.RegisterType<MongoDB_CuriousCustomerDal>().As<ICuriousCustomerDal>().SingleInstance();
+
+            builder.RegisterType<EMailManager>().As<IEMailManager>().SingleInstance();
+
 
 
 

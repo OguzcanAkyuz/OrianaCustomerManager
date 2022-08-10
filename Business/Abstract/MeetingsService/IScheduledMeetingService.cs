@@ -16,5 +16,6 @@ namespace Business.Abstract.MeetingsService
         IResult Update(ScheduledMeeting scheduledMeeting);
 
         IResult Delete(ScheduledMeeting scheduledMeeting);
+       
     }
 }

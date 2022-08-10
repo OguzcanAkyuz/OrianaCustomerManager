@@ -1,12 +1,15 @@
 ﻿using Business.Abstract;
 using Business.Abstract.MeetingsService;
 using Business.Constans;
+
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Abstract.IMeetingsDal;
 using Entities.Concrete;
 using Entities.Concrete.Meetings;
+using Quartz;
+using Quartz.Impl;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,6 +20,7 @@ namespace Business.Concrete.MeetingsManager
     {
         private readonly IScheduledMeetingDal _scheduledMeetingDal;
         private readonly IParticipantService _participantDal;
+        //private readonly IEmail _email;
 
         public ScheduledMeetingManager(IScheduledMeetingDal scheduledMeetingDal,IParticipantService participantService)
         {
@@ -65,5 +69,7 @@ namespace Business.Concrete.MeetingsManager
             _scheduledMeetingDal.Update(scheduledMeeting);
             return new SuccessResult(Messages.Update);
         }
+
+       
     }
 }

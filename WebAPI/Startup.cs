@@ -1,3 +1,6 @@
+using Business.EmailService;
+using Core.QuartzTask.Jobs;
+using Core.QuartzTask.Scheduler;
 using Core.Utilities.Security.Encyption;
 using Core.Utilities.Security.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -10,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Quartz;
 using Quartz.Impl;
+using Quartz.Spi;
 using System.Collections.Specialized;
 
 namespace WebAPI
@@ -69,8 +73,15 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
+            services.AddSingleton<IJobFactory, JobFactory > ();
+            services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
+            services.AddSingleton<NotificationJob>();
+
+            services.AddHostedService<MyScheduler>();
+
 
         }
+       
         private void OnShutdown()
         {
             if (!_quartzScheduler.IsShutdown) _quartzScheduler.Shutdown();

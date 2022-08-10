@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constans;
 using Castle.Core.Resource;
+using Core.CrossCuttingConcerns.EMailService;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -14,9 +15,10 @@ namespace Business.Concrete
     public class AbroadInvestmentRelationManager : IAbroadInvestmentRelationService
     {
         private readonly IAbroadInvestmentRelationDal _abroadInvestmentRelationDal;
-
-        public AbroadInvestmentRelationManager(IAbroadInvestmentRelationDal abroadInvestmentRelationDal)
+        private readonly IEMailManager _iEMailManager;
+        public AbroadInvestmentRelationManager(IAbroadInvestmentRelationDal abroadInvestmentRelationDal,IEMailManager iEMailManager)
         {
+            _iEMailManager = iEMailManager;
             _abroadInvestmentRelationDal = abroadInvestmentRelationDal;
 
         }
@@ -32,6 +34,12 @@ namespace Business.Concrete
 
             public IDataResult<List<AbroadInvestmentRelation>> GetAll()
             {
+            var toList = new List<string>();
+            toList.Add("halit.ozer@ozztech.net");
+            _iEMailManager.SendEMail(
+                new Core.Entities.Concrete.EMailConfig {EnableSsl=true,From = "ouzcustomermanager@hotmail.com", Password= "ouzoztek1!", Port= 587, SmtpServer = "smtp-mail.outlook.com", To=toList }, 
+                new Core.Entities.Concrete.EMailContent {Body = "hotmailde oluyor ",IsBodyHtml = true,Subject = "Mail Test" });
+
                 return new SuccessDataResult<List<AbroadInvestmentRelation>>(_abroadInvestmentRelationDal.GetAll(), Messages.InvestmentRelationsListed); //mesajı düzelt
             }
 
