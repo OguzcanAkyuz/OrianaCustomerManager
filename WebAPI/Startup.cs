@@ -1,6 +1,8 @@
-using Business.EmailService;
-using Core.QuartzTask.Jobs;
-using Core.QuartzTask.Scheduler;
+
+using Core.CrossCuttingConcerns.QuartzTask.JobFactory;
+using Core.CrossCuttingConcerns.QuartzTask.Jobs;
+
+
 using Core.Utilities.Security.Encyption;
 using Core.Utilities.Security.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -73,10 +75,9 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-            services.AddSingleton<IJobFactory, JobFactory > ();
+            services.AddSingleton<IJobFactory, MyJobFactory > ();
             services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
             services.AddSingleton<NotificationJob>();
-
             services.AddHostedService<MyScheduler>();
 
 

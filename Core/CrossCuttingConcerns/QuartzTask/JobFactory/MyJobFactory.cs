@@ -4,12 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.QuartzTask.Jobs
+namespace Core.CrossCuttingConcerns.QuartzTask.JobFactory
 {
-    public class JobFactory : IJobFactory
+    public class MyJobFactory : IJobFactory
     {
         private readonly IServiceProvider _service;
-        public JobFactory(IServiceProvider serviceProvider)
+        public MyJobFactory(IServiceProvider serviceProvider)
         {
             _service = serviceProvider;
         }
@@ -22,7 +22,7 @@ namespace Core.QuartzTask.Jobs
 
         public void ReturnJob(IJob job)
         {
-          
+
         }
     }
 }

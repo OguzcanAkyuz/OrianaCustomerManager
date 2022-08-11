@@ -1,10 +1,8 @@
-﻿using Business.EmailService;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
@@ -18,19 +16,17 @@ namespace WebAPI.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly IEmailSender _emailSender ;
+        private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(IEmailSender emailSender)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
-           _emailSender = emailSender;
+            _logger = logger;
         }
 
-        [HttpGet] 
+        [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
-            var message=new MailMessage("ouzozztech@yandex.com","halit.ozer@ozztech.net","Test Email","This is the contect from our email.");
-            _emailSender.SendEmail(message);
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),

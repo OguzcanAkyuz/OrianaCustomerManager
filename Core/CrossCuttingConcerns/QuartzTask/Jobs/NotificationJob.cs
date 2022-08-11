@@ -3,8 +3,9 @@ using Quartz;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Core.QuartzTask.Jobs
+namespace Core.CrossCuttingConcerns.QuartzTask.Jobs
 {
     public class NotificationJob : IJob
     {
@@ -12,13 +13,13 @@ namespace Core.QuartzTask.Jobs
 
         public NotificationJob(ILogger<NotificationJob> logger)
         {
-           this. _logger = logger;
+            _logger = logger;
         }
 
-        public System.Threading.Tasks.Task Execute(IJobExecutionContext context)
+        public Task Execute(IJobExecutionContext context)
         {
             _logger.LogInformation($"Notify User at{DateTime.Now}and Jobtype:{context.JobDetail.JobType}");
-            return System.Threading.Tasks.Task.CompletedTask;
+            return Task.CompletedTask;
         }
     }
 }
