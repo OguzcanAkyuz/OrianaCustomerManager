@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -24,5 +25,46 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("getbyid")]
+        public IActionResult GetById(string curiousCustomerId)
+        {
+            var result = _curiousCustomerService.GetByCuriousCustomerId(curiousCustomerId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("Add")]
+        public IActionResult Add(CuriousCustomer curiousCustomer)
+        {
+            var result = _curiousCustomerService.Add(curiousCustomer);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("delete")]
+        public IActionResult Delete(CuriousCustomer customer)
+        {
+            var result = _curiousCustomerService.Delete(customer);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+        [HttpPost("update")]
+        public IActionResult Update(CuriousCustomer curiousCustomer)
+        {
+            var result = _curiousCustomerService.Update(curiousCustomer);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
-}
+    }

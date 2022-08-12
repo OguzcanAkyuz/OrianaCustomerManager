@@ -18,6 +18,17 @@ namespace WebAPI.Controllers
             _routineServiceService = routineServiceService;
         }
 
+        [HttpPost("Add")]
+        public IActionResult Add(RoutineService routineService)
+        {
+            var result = _routineServiceService.Add(routineService);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
@@ -39,5 +50,26 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
+        [HttpPost("delete")]
+        public IActionResult Delete(RoutineService routineService)
+        {
+            var result = _routineServiceService.Delete(routineService);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getbyid")]
+        public IActionResult GetById(string routineServiceId)
+        {
+            var result = _routineServiceService.GetByRoutineServiceId(routineServiceId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
     }
 }

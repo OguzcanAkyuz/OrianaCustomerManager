@@ -29,7 +29,7 @@ namespace Business.Concrete
 
 
         }
-        public IDataResult<Customer> GetByCustomerId(string customerId) //iş kuralı ekle IResult.
+        public IDataResult<Customer> GetByCustomerId(string customerId)
         {
             return new SuccessDataResult<Customer>(_customerDal.Get(c => c.Id == customerId));
         }

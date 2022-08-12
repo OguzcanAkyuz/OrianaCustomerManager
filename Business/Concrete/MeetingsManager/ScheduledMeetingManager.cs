@@ -17,10 +17,10 @@ using System.Text;
 namespace Business.Concrete.MeetingsManager
 {
     public class ScheduledMeetingManager : IScheduledMeetingService
-    {
+    {   
         private readonly IScheduledMeetingDal _scheduledMeetingDal;
         private readonly IParticipantService _participantDal;
-        //private readonly IEmail _email;
+       
 
         public ScheduledMeetingManager(IScheduledMeetingDal scheduledMeetingDal,IParticipantService participantService)
         {

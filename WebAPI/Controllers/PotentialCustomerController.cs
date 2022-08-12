@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -14,10 +15,51 @@ namespace WebAPI.Controllers
             _potentialCustomerService = potentialCustomerService;
         }
 
+        [HttpPost("Add")]
+        public IActionResult Add(PotentialCustomer potentialCustomer)
+        {
+            var result = _potentialCustomerService.Add(potentialCustomer);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getbyid")]
+        public IActionResult GetById(string potentialCustomerId)
+        {
+            var result = _potentialCustomerService.GetByPotentialCustomerId(potentialCustomerId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("update")]
+        public IActionResult Update(PotentialCustomer potentialCustomer)
+        {
+            var result = _potentialCustomerService.Update(potentialCustomer);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
             var result = _potentialCustomerService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("delete")]
+        public IActionResult Delete(PotentialCustomer potentialCustomer)
+        {
+            var result = _potentialCustomerService.Delete(potentialCustomer);
             if (result.Success)
             {
                 return Ok(result);

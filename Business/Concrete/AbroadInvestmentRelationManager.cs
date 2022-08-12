@@ -1,24 +1,20 @@
 ﻿using Business.Abstract;
 using Business.Constans;
-using Castle.Core.Resource;
 using Core.CrossCuttingConcerns.EMailService;
-using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Business.Concrete
 {
     public class AbroadInvestmentRelationManager : IAbroadInvestmentRelationService
     {
         private readonly IAbroadInvestmentRelationDal _abroadInvestmentRelationDal;
-        private readonly IEMailManager _iEMailManager;
-        public AbroadInvestmentRelationManager(IAbroadInvestmentRelationDal abroadInvestmentRelationDal,IEMailManager iEMailManager)
+
+
+        public AbroadInvestmentRelationManager(IAbroadInvestmentRelationDal abroadInvestmentRelationDal, IEMailManager iEMailManager)
         {
-            _iEMailManager = iEMailManager;
             _abroadInvestmentRelationDal = abroadInvestmentRelationDal;
 
         }
@@ -30,24 +26,19 @@ namespace Business.Concrete
             return new SuccessResult(Messages.SuccesResult);
         }
 
-           
+ 
 
-            public IDataResult<List<AbroadInvestmentRelation>> GetAll()
-            {
-            var toList = new List<string>();
-            toList.Add("halit.ozer@ozztech.net");
-            _iEMailManager.SendEMail(
-                new Core.Entities.Concrete.EMailConfig {EnableSsl=true,From = "ouzcustomermanager@hotmail.com", Password= "ouzoztek1!", Port= 587, SmtpServer = "smtp-mail.outlook.com", To=toList }, 
-                new Core.Entities.Concrete.EMailContent {Body = "hotmailde oluyor ",IsBodyHtml = true,Subject = "Mail Test" });
+        public IDataResult<List<AbroadInvestmentRelation>> GetAll()
+        {
 
-                return new SuccessDataResult<List<AbroadInvestmentRelation>>(_abroadInvestmentRelationDal.GetAll(), Messages.InvestmentRelationsListed); //mesajı düzelt
-            }
+            return new SuccessDataResult<List<AbroadInvestmentRelation>>(_abroadInvestmentRelationDal.GetAll(), Messages.InvestmentRelationsListed); //mesajı düzelt
+        }
 
 
-            public IDataResult<AbroadInvestmentRelation> GetByAbroadInvestmentRelationsId(string abroadInvestmentRelationId)
-            {
-                return new SuccessDataResult<AbroadInvestmentRelation>(_abroadInvestmentRelationDal.Get(ar => ar.Id == abroadInvestmentRelationId));
-            }
+        public IDataResult<AbroadInvestmentRelation> GetByAbroadInvestmentRelationsId(string abroadInvestmentRelationId)
+        {
+            return new SuccessDataResult<AbroadInvestmentRelation>(_abroadInvestmentRelationDal.Get(ar => ar.Id == abroadInvestmentRelationId));
+        }
 
 
         public IResult Delete(AbroadInvestmentRelation abroadInvestmentRelation)
@@ -58,16 +49,17 @@ namespace Business.Concrete
 
 
         public IResult Update(AbroadInvestmentRelation abroadInvestmentRelation)
-            {
+        {
             _abroadInvestmentRelationDal.Update(abroadInvestmentRelation);
             return new SuccessResult(Messages.Update);
         }
 
-
-
-
+        public IDataResult<AbroadInvestmentRelation> GetAllCountry(string country)
+        {
+            return new SuccessDataResult<AbroadInvestmentRelation>(_abroadInvestmentRelationDal.Get(ar => ar.Country == country));
         }
-
     }
+
+}
 
 

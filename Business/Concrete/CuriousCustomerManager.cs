@@ -1,10 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constans;
-using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using System;
 using System.Collections.Generic;
 
 namespace Business.Concrete
@@ -20,14 +18,13 @@ namespace Business.Concrete
 
         public IResult Add(CuriousCustomer curiousCustomer)
         {
-            
+
             _curiousCustomerDal.Add(curiousCustomer);
 
-            return new SuccessResult(Messages.CustomerAdded); //mesaj tanımla
+            return new SuccessResult(Messages.CustomerAdded);
 
         }
 
-        
 
         public IDataResult<List<CuriousCustomer>> GetAll()
         {
@@ -58,6 +55,6 @@ namespace Business.Concrete
 
 
 
-        }
     }
+}
 

@@ -13,25 +13,25 @@ namespace Core.CrossCuttingConcerns.QuartzTask.JobFactory
     public class MyScheduler : IHostedService
     {
         public IScheduler Scheduler { get; set; }
-        private readonly IJobFactory jobFactory;
-        private readonly ISchedulerFactory schedulerFactory;
-        private StdSchedulerFactory factory = new StdSchedulerFactory();
+        private readonly IJobFactory _jobFactory;
+        private readonly ISchedulerFactory _schedulerFactory;
+        private StdSchedulerFactory _factory = new StdSchedulerFactory();
     
         
 
 
 
-        public MyScheduler(IScheduler scheduler,IJobFactory jobFactory)
+        public MyScheduler(IScheduler scheduler,IJobFactory jobFactory,ISchedulerFactory schedulerFactory)
         {
             
-            jobFactory = jobFactory;
-            schedulerFactory = schedulerFactory;
+            _jobFactory = jobFactory;
+            _schedulerFactory = schedulerFactory;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            Scheduler = await schedulerFactory.GetScheduler();
-            Scheduler.JobFactory = jobFactory;
+            Scheduler = await _schedulerFactory.GetScheduler();
+            Scheduler.JobFactory = _jobFactory;
             await Scheduler.Start(cancellationToken);
             await Task.CompletedTask;
         }
