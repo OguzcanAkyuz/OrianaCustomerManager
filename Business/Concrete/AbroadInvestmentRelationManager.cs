@@ -44,7 +44,7 @@ namespace Business.Concrete
         public IResult Delete(AbroadInvestmentRelation abroadInvestmentRelation)
         {
             _abroadInvestmentRelationDal.Delete(abroadInvestmentRelation);
-            return new SuccessResult(Messages.Deleted);
+            return new SuccessDataResult<List<AbroadInvestmentRelation>>(Messages.Deleted);
         }
 
 

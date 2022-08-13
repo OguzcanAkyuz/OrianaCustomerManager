@@ -4,6 +4,7 @@ using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Concrete.Meetings;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -51,7 +52,7 @@ namespace Business.Concrete
         public IResult Update(PotentialCustomer potentialCustomer)
         {
             _potentialCustomer.Update(potentialCustomer);
-            return new SuccessResult(Messages.Update);
+            return new SuccessDataResult<List<PotentialCustomer>>(Messages.Update);
         }
 
    

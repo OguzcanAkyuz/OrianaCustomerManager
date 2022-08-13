@@ -4,6 +4,7 @@ using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Concrete.Meetings;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -52,7 +53,7 @@ namespace Business.Concrete
         public IResult Delete(InvestmentRelation ınvestmentRelation)
         {
             _ınvestmentRelationDal.Delete(ınvestmentRelation);
-            return new SuccessResult(Messages.Deleted);
+            return new SuccessDataResult<List<InvestmentRelation>>(Messages.Deleted);
         }
 
 

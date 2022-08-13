@@ -4,6 +4,7 @@ using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Concrete.Meetings;
 using System;
 using System.Collections.Generic;
 
@@ -60,7 +61,7 @@ namespace Business.Concrete
         {
 
             _customerDal.Delete(customer);
-            return new SuccessResult(Messages.Deleted);
+            return new SuccessDataResult<List<Customer>>(Messages.Deleted);
         }
 
         public IResult Update(Customer customer)

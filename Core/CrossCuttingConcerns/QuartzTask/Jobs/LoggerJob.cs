@@ -17,12 +17,12 @@ namespace Core.CrossCuttingConcerns.QuartzTask.Jobs
         }
 
 
-       
 
-        public Task Execute(IJobExecutionContext context)
+
+        public System.Threading.Tasks.Task Execute(IJobExecutionContext context)
         {
             _logger.LogInformation($"Log Job: at {DateTime.Now} and Jobtype: {context.JobDetail.JobType}");
-            return Task.CompletedTask;
+            return System.Threading.Tasks.Task.CompletedTask;
         }
     }
 }

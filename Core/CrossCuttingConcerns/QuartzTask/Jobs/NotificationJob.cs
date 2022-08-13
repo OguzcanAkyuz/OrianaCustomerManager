@@ -3,7 +3,7 @@ using Quartz;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Core.CrossCuttingConcerns.QuartzTask.Jobs
 {
@@ -16,10 +16,10 @@ namespace Core.CrossCuttingConcerns.QuartzTask.Jobs
             _logger = logger;
         }
 
-        public Task Execute(IJobExecutionContext context)
+        public System.Threading.Tasks. Task Execute(IJobExecutionContext context)
         {
             _logger.LogInformation($"Notify User at{DateTime.Now}and Jobtype:{context.JobDetail.JobType}");
-            return Task.CompletedTask;
+            return System.Threading.Tasks.Task.CompletedTask;
         }
     }
 }

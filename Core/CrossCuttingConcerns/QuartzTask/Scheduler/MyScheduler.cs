@@ -28,16 +28,16 @@ namespace Core.CrossCuttingConcerns.QuartzTask.JobFactory
             _schedulerFactory = schedulerFactory;
         }
 
-        public async Task StartAsync(CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task StartAsync(CancellationToken cancellationToken)
         {
             Scheduler = await _schedulerFactory.GetScheduler();
             Scheduler.JobFactory = _jobFactory;
             await Scheduler.Start(cancellationToken);
-            await Task.CompletedTask;
+            await System.Threading.Tasks.Task.CompletedTask;
         }
 
 
-        public async Task StopAsync(CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task StopAsync(CancellationToken cancellationToken)
         {
             await Scheduler.Shutdown();
         }

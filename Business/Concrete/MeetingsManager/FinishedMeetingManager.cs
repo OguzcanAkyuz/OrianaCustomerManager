@@ -48,7 +48,7 @@ namespace Business.Concrete.MeetingsManager
         public IResult Delete(FinishedMeeting finishedMeeting)
         {
             _finishedMeetingDal.Delete(finishedMeeting);
-            return new SuccessResult(Messages.Deleted);
+            return new SuccessDataResult<List<FinishedMeeting>>(Messages.Deleted);
         }
         public IResult Update(FinishedMeeting finishedMeeting)
         {

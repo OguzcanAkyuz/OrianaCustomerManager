@@ -5,6 +5,7 @@ using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Concrete.Meetings;
 using System.Collections.Generic;
 
 
@@ -58,7 +59,7 @@ namespace Business.Concrete
         public IResult Delete(RoutineService routineService)
         {
             _routineServiceDal.Delete(routineService);
-            return new SuccessResult(Messages.Deleted);
+            return new SuccessDataResult<List<RoutineService>>(Messages.Deleted);
 
         }
 
