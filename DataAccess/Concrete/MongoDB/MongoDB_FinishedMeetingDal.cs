@@ -11,7 +11,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.MongoDB
 {
-    public class MongoDB_FinishedMeetingDal : MongoDB_RepositoryBase<FinishedMeeting, MongoDB_Context<FinishedMeeting, MongoDB_CustomerCollection>>, IFinishedMeetingDal
+    public class MongoDB_FinishedMeetingDal : MongoDB_RepositoryBase<FinishedMeeting, MongoDB_Context<FinishedMeeting, MongoDB_FinishedMeetingCollection>>, IFinishedMeetingDal
     {
     }
 }

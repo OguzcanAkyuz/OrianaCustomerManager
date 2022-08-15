@@ -15,9 +15,9 @@ namespace Entities.Concrete
         public string Id { get; set; }
         public string ProductName { get; set; }
         public DateTime PurchaseDate { get; set; }
-        public DateTime LicenseTerm { get; set; } //değişkeni değiştir Lisans Süresini ayarla.
+        public DateTime LicenseTerm { get; set; } 
         public DateTime LisenceEndDate { get; set; }
-        public decimal PurchasePrice { get; set; } //değişkeni değiştir 
+        public  float  PurchasePrice { get; set; } 
         public string CustomerNote { get; set; }
         public string ProductVersion { get; set; } 
         public string CustomerCompanyName { get; set; }

@@ -26,7 +26,7 @@ namespace Entities.Concrete
 
         public string Note { get; set; }
         public DateTime DateOfUpload { get; set; }
-        public string ProductId { get; set; }
+       
 
 
 

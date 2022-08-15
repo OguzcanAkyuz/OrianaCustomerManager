@@ -9,7 +9,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.MongoDB
 {
-    public class MongoDB_RoutineServiceDal : MongoDB_RepositoryBase<RoutineService, MongoDB_Context<RoutineService, MongoDB_CustomerCollection>>, IRoutineServiceDal
+    public class MongoDB_RoutineServiceDal : MongoDB_RepositoryBase<RoutineService, MongoDB_Context<RoutineService, MongoDB_RoutineServiceCollection>>, IRoutineServiceDal
     {
     }
 }

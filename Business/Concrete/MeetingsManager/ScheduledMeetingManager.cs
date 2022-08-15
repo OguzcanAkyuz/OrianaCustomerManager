@@ -61,7 +61,7 @@ namespace Business.Concrete.MeetingsManager
         public IResult Delete(ScheduledMeeting scheduledMeeting)
         {
             _scheduledMeetingDal.Delete(scheduledMeeting);
-            return new SuccessResult(Messages.Deleted);
+            return new SuccessDataResult<List<ScheduledMeeting>>(Messages.Deleted);
         }
 
         public IResult Update(ScheduledMeeting scheduledMeeting)

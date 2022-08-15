@@ -4,9 +4,9 @@ using System.Text;
 
 namespace DataAccess.Concrete.MongoDB.Collections
 {
-    public class MongoDB_ParticipatColleciton : ICollection
+    public class MongoDB_ParticipantCollection : ICollection
     {
-        public MongoDB_ParticipatColleciton()
+        public MongoDB_ParticipantCollection()
         {
             CollectionName = "Participants";
         }

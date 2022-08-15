@@ -51,10 +51,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.CompanyBusinessArea);
         }
 
-        public IDataResult<List<Customer>> GetAllPurchasePrice(decimal min, decimal max)
-        {
-            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(c => c.PurchasePrice >= min && c.PurchasePrice <= max));
-        }
+        
 
         
         public IResult Delete(Customer customer)

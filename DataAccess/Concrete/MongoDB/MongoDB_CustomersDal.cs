@@ -6,7 +6,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete.MongoDB
 {
-    public class MongoDB_CustomersDal : MongoDB_RepositoryBase<Customer, MongoDB_Context<Customer, MongoDB_CustomerCollection>> , ICustomerDal
+    public class MongoDB_CustomersDal : MongoDB_RepositoryBase<Customer, MongoDB_Context<Customer, MongoDB_CustomerCollection>>, ICustomerDal
     {
     }
 }

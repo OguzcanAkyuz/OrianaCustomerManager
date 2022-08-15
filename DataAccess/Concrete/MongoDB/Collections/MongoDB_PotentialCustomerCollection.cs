@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataAccess.Concrete.MongoDB.Collections
 {
-    internal class MongoDB_PotentialCustomerCollection : ICollection
+    public class MongoDB_PotentialCustomerCollection : ICollection
     {
         public MongoDB_PotentialCustomerCollection()
         {
@@ -14,6 +15,3 @@ namespace DataAccess.Concrete.MongoDB.Collections
         public string CollectionName { get; set; }
     }
 }
-
-    
-

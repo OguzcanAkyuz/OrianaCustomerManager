@@ -10,7 +10,7 @@ namespace Business.Abstract
 
         IDataResult<List<Customer>> GetAll();
         IDataResult<List<Customer>> GetAllByCustomersId(string id);
-        IDataResult<List<Customer>> GetAllPurchasePrice(decimal min, decimal max);
+       
         IDataResult<List<Customer>> GetAllCompanyBusinessArea(string companyBusinessArea);
         IDataResult<Customer> GetByCustomerId(string customerId);
         IResult Add(Customer customer);

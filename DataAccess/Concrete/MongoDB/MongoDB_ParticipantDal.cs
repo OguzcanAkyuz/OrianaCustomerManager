@@ -9,7 +9,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.MongoDB
 {
-    public class MongoDB_ParticipantDal : MongoDB_RepositoryBase<Participant, MongoDB_Context<Participant, MongoDB_CustomerCollection>>, IParticipantDal
+    public class MongoDB_ParticipantDal : MongoDB_RepositoryBase<Participant, MongoDB_Context<Participant, MongoDB_ParticipantCollection>>, IParticipantDal
     {
     }
 }
