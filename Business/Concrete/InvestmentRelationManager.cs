@@ -36,12 +36,12 @@ namespace Business.Concrete
 
         public IDataResult<List<InvestmentRelation>> GetAllByInvestmentRelationId(string Id)
         {
-            return new SuccessDataResult<List<InvestmentRelation>>(_ınvestmentRelationDal.GetAll(ır => ır.InvestmentRelationId == Id));
+            return new SuccessDataResult<List<InvestmentRelation>>(_ınvestmentRelationDal.GetAll(ır => ır.Id == Id));
         }
 
         public IDataResult<InvestmentRelation> GetByInvestmentRelationId(string ınvestmentRelationId)
         {
-            return new SuccessDataResult<InvestmentRelation>(_ınvestmentRelationDal.Get(ır => ır.InvestmentRelationId == ınvestmentRelationId));
+            return new SuccessDataResult<InvestmentRelation>(_ınvestmentRelationDal.Get(ır => ır.Id == ınvestmentRelationId));
         }
 
         public IResult Update(InvestmentRelation ınvestmentRelation)

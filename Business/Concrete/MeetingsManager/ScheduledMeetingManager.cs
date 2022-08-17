@@ -47,7 +47,7 @@ namespace Business.Concrete.MeetingsManager
 
         public IDataResult<List<ScheduledMeeting>> GetAllParticiPants(string participantId)
         {
-            return new SuccessDataResult<List<ScheduledMeeting>>(_scheduledMeetingDal.GetAll(s => s.ParticipantsId == participantId));
+            return new SuccessDataResult<List<ScheduledMeeting>>(_scheduledMeetingDal.GetAll(s => s.Participants == participantId));
 
             
         }

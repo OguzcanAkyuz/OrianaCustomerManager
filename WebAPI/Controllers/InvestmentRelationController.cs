@@ -56,5 +56,15 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpPost("update")]
+        public IActionResult Update(InvestmentRelation ınvestmentRelation)
+        {
+            var result = _ınvestmentRelationService.Update(ınvestmentRelation);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

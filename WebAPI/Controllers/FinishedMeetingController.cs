@@ -58,6 +58,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
         [HttpPost("update")]
         public IActionResult Update(FinishedMeeting finishedMeeting)
         {

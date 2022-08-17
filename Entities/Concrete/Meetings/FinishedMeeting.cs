@@ -14,10 +14,10 @@ namespace Entities.Concrete.Meetings
         public string Id { get; set; }
        
         public string CustomerInformation { get; set; }
-        public string ParticipantsId { get; set; }
+        public string Participants { get; set; }
 
         public string MeetingSubject { get; set; }
-        public bool MeetingResult { get; set; }
+        public string MeetingResult { get; set; }
 
         public string MeetingTitle { get; set; }
 

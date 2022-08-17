@@ -12,9 +12,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Quartz;
-using Quartz.Plugin.Interrupt;
-using System;
 
 namespace WebAPI
 {
@@ -63,39 +60,39 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-         
-
-                //services.AddSingleton<IJobFactory, MyJobFactory > ();
-                //services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
-                //services.AddSingleton<NotificationJob>();
-                //services.AddHostedService<MyScheduler>();
-            
-            
-    }
 
 
+            //services.AddSingleton<IJobFactory, MyJobFactory > ();
+            //services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
+            //services.AddSingleton<NotificationJob>();
+            //services.AddHostedService<MyScheduler>();
 
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
+
         }
-        app.ConfigureCustomExceptionMiddleware();
-        app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
-        app.UseHttpsRedirection();
 
-        app.UseRouting();
 
-        app.UseAuthorization();
-
-        app.UseEndpoints(endpoints =>
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            endpoints.MapControllers();
-        });
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
+            }
+            app.ConfigureCustomExceptionMiddleware();
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
     }
-}
 }

@@ -29,12 +29,12 @@ namespace Business.Concrete
 
         public IDataResult<List<RoutineService>> GetAllByRoutineServiceId(string id)
         {
-            return new SuccessDataResult<List<RoutineService>>(_routineServiceDal.GetAll(r => r.RoutineServiceId == id));
+            return new SuccessDataResult<List<RoutineService>>(_routineServiceDal.GetAll(r => r.Id == id));
         }
 
         public IDataResult<RoutineService> GetByRoutineServiceId(string routineServiceId)
         {
-            return new SuccessDataResult<RoutineService>(_routineServiceDal.Get(r => r.RoutineServiceId == routineServiceId));
+            return new SuccessDataResult<RoutineService>(_routineServiceDal.Get(r => r.Id == routineServiceId));
         }
 
         public IDataResult<RoutineService> GetByOfficer(string officer)

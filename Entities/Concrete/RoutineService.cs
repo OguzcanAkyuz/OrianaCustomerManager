@@ -14,13 +14,12 @@ namespace Entities.Concrete
         public string CustomerName { get; set; }
 
         public string RoutineServiceDescription { get; set; }
-        public DateTime RoutineServiceDate { get; set; }
-        public float RoutineServiceTime { get; set; }
+        public string RoutineServiceDate { get; set; }
+        public string RoutineServiceTime { get; set; }
 
         public string Officer { get; set; }
 
-        public string RoutineServiceId { get; set; }
-
+        public string ProductId { get; set; }
 
 
     }

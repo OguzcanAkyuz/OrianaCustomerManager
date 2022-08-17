@@ -15,23 +15,21 @@ namespace Entities.Concrete.Meetings
        
         public string CustomerInformation { get; set; }
 
-        public string ParticipantsId { get; set; }
+        public string Participants { get; set; }
 
         public string MeetingSubject { get; set; }
-        public bool MeetingResult { get; set; }  
+        public string MeetingResult { get; set; }  
 
         public string MeetingTitle { get; set; }
 
-        public DateTime MeetingDate { get; set; }
-
-        public bool MeetingRepetition { get; set; }
+        public string MeetingDate { get; set; }
 
         public string CompanyName { get; set; }
         public string CompanyAdress { get; set; }
         public string CompanyBusinessArea { get; set; }
         public string CompanyWebAdress { get; set; }
         public string ExecutiveName { get; set; }
-        public int ExecutivePhoneNumber { get; set; }
+        public string ExecutivePhoneNumber { get; set; }
 
         public string ExecutiveEmail { get; set; }
 

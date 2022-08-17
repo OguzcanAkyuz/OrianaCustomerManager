@@ -12,7 +12,7 @@ namespace Entities.Concrete
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        public string InvestmentRelationId { get; set; }
+     
         public string InvestorName { get; set; }
         public string InvestorSurname { get; set; }
 
@@ -25,6 +25,6 @@ namespace Entities.Concrete
         public string Position { get; set; }
 
         public string Note { get; set; }
-        public DateTime DateOfUpload { get; set; }
+        public string DateOfUpload { get; set; }
     }
 }

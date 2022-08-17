@@ -25,7 +25,7 @@ namespace Entities.Concrete
         public string Position { get; set; }
 
         public string Note { get; set; }
-        public DateTime DateOfUpload { get; set; }
+        public string DateOfUpload { get; set; }
        
 
 

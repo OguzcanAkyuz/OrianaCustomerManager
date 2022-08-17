@@ -14,10 +14,10 @@ namespace Entities.Concrete
 
         public string Id { get; set; }
         public string ProductName { get; set; }
-        public DateTime PurchaseDate { get; set; }
-        public DateTime LicenseTerm { get; set; } 
-        public DateTime LisenceEndDate { get; set; }
-        public  float  PurchasePrice { get; set; } 
+        public string PurchaseDate { get; set; }
+        public string LicenseTerm { get; set; } 
+        public string LisenceEndDate { get; set; }
+        public  string  PurchasePrice { get; set; } 
         public string CustomerNote { get; set; }
         public string ProductVersion { get; set; } 
         public string CustomerCompanyName { get; set; }
