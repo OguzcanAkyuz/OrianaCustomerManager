@@ -13,7 +13,7 @@ namespace Entities.Concrete
         [BsonRepresentation(BsonType.ObjectId)]
 
         public string Id { get; set; }
-        public string ProductName { get; set; }
+        public string ProductId { get; set; }
         public string PurchaseDate { get; set; }
         public string LicenseTerm { get; set; } 
         public string LisenceEndDate { get; set; }

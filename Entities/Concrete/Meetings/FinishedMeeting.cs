@@ -26,7 +26,7 @@ namespace Entities.Concrete.Meetings
         public string CompanyBusinessArea { get; set; }
         public string CompanyWebAdress { get; set; }
         public string ExecutiveName { get; set; }
-        public int ExecutivePhoneNumber { get; set; }
+        public string ExecutivePhoneNumber { get; set; }
 
         public string ExecutiveEmail { get; set; }
 
