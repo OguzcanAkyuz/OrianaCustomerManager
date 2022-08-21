@@ -9,7 +9,7 @@ namespace Core.Utilities.EmailService
     public class EmailService : IMessageService
 
     {
-        readonly 
+       
         public Task NotifyPlayerForAttention(string participantId, string subject, string message, string scheduledMeetingId)
         {
             throw new NotImplementedException();

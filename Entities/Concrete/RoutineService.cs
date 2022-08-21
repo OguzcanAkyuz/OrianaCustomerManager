@@ -21,6 +21,9 @@ namespace Entities.Concrete
         public string Time { get; set; }
         public string ProductId { get; set; }
 
+      
+        public string PersonSurname { get; set; }
+
 
     }
 }

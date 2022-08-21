@@ -1,7 +1,7 @@
-﻿namespace WebAPI.Jobs
-{
-    public class MailJob:JobBase<LogMailModel>
-    {
+﻿//namespace WebAPI.Jobs
+//{
+//    public class MailJob:JobBase<LogMailModel>
+//    {
 
-    }
-}
+//    }
+//}
