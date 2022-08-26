@@ -3,7 +3,6 @@ using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
 using Core.Utilities.Security.Jwt;
-
 using Entities.DTOs;
 
 namespace Business.Concrete
@@ -36,6 +35,7 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(user, "Kayıt oldu");
         }
 
+
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
             var userToCheck = _userService.GetByMail(userForLoginDto.Email);
@@ -63,7 +63,7 @@ namespace Business.Concrete
 
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
-            var claims = _userService.GetClaims(user);
+            var claims = _userService.GetClaims(user.Id);
             var accessToken = _tokenHelper.CreateToken(user, claims);
             return new SuccessDataResult<AccessToken>(accessToken, "Token oluşturuldu");
         }

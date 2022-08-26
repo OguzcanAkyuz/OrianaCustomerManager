@@ -13,11 +13,6 @@ namespace DataAccess.Concrete.MongoDB
 {
     public class MongoDB_OperationClaimsDal : MongoDB_RepositoryBase<OperationClaim, MongoDB_Context<OperationClaim, MongoDB_OperationClaimsCollection>>, IOperationClaimDal
     {
-        public OperationClaim Id { get ; set; }
-
-        public bool IsTransient()
-        {
-            return true;
-        }
+     
     }
 }

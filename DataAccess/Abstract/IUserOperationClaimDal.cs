@@ -1,12 +1,10 @@
 ﻿using Abp.Domain.Entities;
+using Core.DataAccess.Databases;
 using Core.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IUserOperationClaimDal : IEntity<UserOperationClaim>
+    public interface IUserOperationClaimDal : IEntityRepository<UserOperationClaim>
     {
     }
 }
