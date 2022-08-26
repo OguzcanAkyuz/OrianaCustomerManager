@@ -18,7 +18,7 @@ namespace Entities.Concrete
         public string RoutineServiceTime { get; set; }
 
         public string Officer { get; set; }
-        public string Time { get; set; }
+        
         public string ProductId { get; set; }
 
       

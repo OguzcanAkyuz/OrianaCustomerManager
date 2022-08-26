@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Core.Entities.Concrete
 {
-    public class OperationClaim
+    public class OperationClaim :IEntity
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

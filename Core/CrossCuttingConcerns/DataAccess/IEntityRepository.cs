@@ -6,7 +6,7 @@ using Core.Entities;
 
 namespace Core.DataAccess
 {
-    public interface IEntityRepository<T> where T:class,IEntity,new()
+    public interface IEntity<T> where T:class,IEntity,new()
     {
         List<T> GetAll(Expression<Func<T, bool>> filter=null);
         IList<T> GetList(Expression<Func<T, bool>> filter=null);

@@ -1,9 +1,6 @@
 ﻿using Core.DataAccess.Databases.MongoDB;
 using Core.Entities;
-using Core.Utilities.IoC;
 using DataAccess.Concrete.MongoDB.Collections;
-using DataAccess.Concrete.Databases.MongoDB.Utilities.ConnectionResolvers;
-using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;
 using System.Threading;
@@ -28,11 +25,11 @@ namespace DataAccess.Concrete.Databases.MongoDB
         tryAgain:
             try
             {
-                    client = new MongoClient("mongodb://localhost:27017");
-                    database = client.GetDatabase("CustomerManager");
-                    collection = database.GetCollection<TEntity>(predefinedCollection.CollectionName);
-                    return collection;
-              
+                client = new MongoClient("mongodb://localhost:27017");
+                database = client.GetDatabase("CustomerManager");
+                collection = database.GetCollection<TEntity>(predefinedCollection.CollectionName);
+                return collection;
+
             }
             catch (System.Exception)
             {

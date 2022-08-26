@@ -9,7 +9,8 @@ namespace Core.DataAccess.Databases.MongoDB
     public class MongoDB_RepositoryBase<TEntity, MongoDBContext> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()
        where MongoDBContext : class, IMongoDB_Context<TEntity>, new()
-    {
+    {   
+
         private IMongoCollection<TEntity> _collection { get; set; }
         public MongoDB_RepositoryBase()
         {
