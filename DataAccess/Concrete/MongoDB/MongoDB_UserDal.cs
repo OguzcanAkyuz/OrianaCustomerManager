@@ -11,7 +11,7 @@ using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.MongoDB
 {
-    public class MongoDB_UserDal : MongoDB_RepositoryBase<User, MongoDB_Context<User, MongoDB_UserCollection>>
+    public class MongoDB_UserDal : MongoDB_RepositoryBase<User, MongoDB_Context<User, MongoDB_UserCollection>>,IUserDal
     {
         
         public List<OperationClaim> GetClaims(string userId)
@@ -41,9 +41,16 @@ namespace DataAccess.Concrete.MongoDB
 
            
         }
-       
+          
+        public IList<User> GetList(Expression<Func<User, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
 
-      
+        void IEntityRepositoryBase<User>.Update(User entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

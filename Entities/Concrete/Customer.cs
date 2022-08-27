@@ -17,7 +17,7 @@ namespace Entities.Concrete
         public string PurchaseDate { get; set; }
         public string LicenseTerm { get; set; } 
         public string LisenceEndDate { get; set; }
-        public  string  PurchasePrice { get; set; } 
+        public  string PurchasePrice { get; set; } 
         public string CustomerNote { get; set; }
         public string ProductVersion { get; set; } 
         public string CustomerCompanyName { get; set; }
@@ -25,6 +25,7 @@ namespace Entities.Concrete
         public string CompanyBusinessArea { get; set; }
         public string CompanyWebAdress { get; set; }
         public string ExecutiveName { get; set; }
+        public string  ExecutiveSurname { get; set; }
         public string ExecutivePhoneNumber { get; set; } 
 
         public string ExecutiveEmail { get; set; }
