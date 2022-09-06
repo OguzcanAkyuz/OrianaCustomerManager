@@ -1,6 +1,7 @@
 ﻿using Core.DataAccess;
 using Core.DataAccess.Databases.MongoDB;
 using Core.Entities.Concrete;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.Databases.MongoDB;
 using DataAccess.Concrete.MongoDB.Collections;
@@ -44,12 +45,24 @@ namespace DataAccess.Concrete.MongoDB
           
         public IList<User> GetList(Expression<Func<User, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            List<User> _users = new List<User>();
+
+            using(var context = new MongoDB_Context<User, MongoDB_UserCollection>())
+            {
+                _users = context.collection.Find<User>(u => true).Sort("{id}").ToList();
+                return _users;
+            }
+            
         }
 
         void IEntityRepositoryBase<User>.Update(User entity)
         {
-            throw new NotImplementedException();
+            User _user = new User();
+            using (var context = new MongoDB_Context<User, MongoDB_UserCollection>()) 
+            {
+
+                _user.Equals( context.collection.ReplaceOne(u => u.Id == entity.Id,entity));
+            }
         }
     }
 }
