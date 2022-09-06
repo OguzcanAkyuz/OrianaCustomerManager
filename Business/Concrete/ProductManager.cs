@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constans;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
@@ -19,6 +20,7 @@ namespace Business.Concrete
         {
             _productDal = productDal;
         }
+        [SecuredOperation("suser,admin,Customer.Add")]
         public IResult Add(Product product)
         {
           
@@ -26,22 +28,24 @@ namespace Business.Concrete
             return new SuccessResult(Messages.SuccesResult);
 
         }
+        [SecuredOperation("suser,admin,Customer.Get")]
         public IDataResult<List<Product>> GetAll()
         {
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductListed);
         }
-
+        [SecuredOperation("suser,admin,Customer.Get")]
         public IDataResult<Product> GetByProductId(string id)
         {
             return new SuccessDataResult<Product>(_productDal.Get(p => p.Id == id));
         }
 
-   
+        [SecuredOperation("suser,admin,Customer.Update")]
         public IResult Update(Product product)
         {
             _productDal.Update(product);
             return new SuccessResult(Messages.Update);
         }
+        [SecuredOperation("suser,admin,Customer.Delete")]
         public IResult Delete(Product product)
         {
             _productDal.Delete(product);

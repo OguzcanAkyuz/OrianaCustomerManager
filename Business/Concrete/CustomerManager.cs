@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constans;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
@@ -19,7 +20,7 @@ namespace Business.Concrete
         {
             _customerDal = customersDal;
         }
-
+        [SecuredOperation("suser,admin,Customer.Update")]
         public IResult Add(Customer customer)
         {
        
@@ -30,37 +31,38 @@ namespace Business.Concrete
 
 
         }
+        [SecuredOperation("suser,admin,Customer.Get")]
         public IDataResult<Customer> GetByCustomerId(string customerId)
         {
             return new SuccessDataResult<Customer>(_customerDal.Get(c => c.Id == customerId));
         }
-
+        [SecuredOperation("suser,admin,Customer.Get")]
         public IDataResult<List<Customer>> GetAll()
         {
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.CustomersListed);
 
         }
-
+        [SecuredOperation("suser,admin,Customer.Get")]
         public IDataResult<List<Customer>> GetAllByCustomersId(string id)
         {
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(c => c.Id == id));
         }
-
+        [SecuredOperation("suser,admin,Customer.Get")]
         public IDataResult<List<Customer>> GetAllCompanyBusinessArea(string companyBusinessArea)
         {
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.CompanyBusinessArea);
         }
 
-        
 
-        
+
+        [SecuredOperation("suser,admin,Customer.Delete")]
         public IResult Delete(Customer customer)
         {
 
             _customerDal.Delete(customer);
             return new SuccessDataResult<List<Customer>>(Messages.Deleted);
         }
-
+        [SecuredOperation("suser,admin,Customer.Update")]
         public IResult Update(Customer customer)
         {
           
