@@ -1,9 +1,9 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constans;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.Concrete.Meetings;
 using System.Collections.Generic;
 
 namespace Business.Concrete
@@ -16,7 +16,7 @@ namespace Business.Concrete
         {
             _curiousCustomerDal = curiousCustomerDal;
         }
-
+        [SecuredOperation("suser,admin,CuriousCustomer.Add")]
         public IResult Add(CuriousCustomer curiousCustomer)
         {
 
@@ -26,27 +26,28 @@ namespace Business.Concrete
 
         }
 
-
+        [SecuredOperation("suser,admin,CuriousCustomer.Get")]
         public IDataResult<List<CuriousCustomer>> GetAll()
         {
             return new SuccessDataResult<List<CuriousCustomer>>(_curiousCustomerDal.GetAll(), Messages.CuriousCustomerListed);
         }
-
+        [SecuredOperation("suser,admin,CuriousCustomer.Get")]
         public IDataResult<List<CuriousCustomer>> GetAllByCuriousProductId(string productId)
         {
             return new SuccessDataResult<List<CuriousCustomer>>(_curiousCustomerDal.GetAll(cp => cp.Id == productId));
         }
-
+        [SecuredOperation("suser,admin,CuriousCustomer.Get")]
         public IDataResult<CuriousCustomer> GetByCuriousCustomerId(string curiousCustomerId)
         {
             return new SuccessDataResult<CuriousCustomer>(_curiousCustomerDal.Get(cp => cp.Id == curiousCustomerId));
         }
-
+        [SecuredOperation("suser,admin,CuriousCustomer.Delete")]
         public IResult Delete(CuriousCustomer curiousCustomer)
         {
             _curiousCustomerDal.Delete(curiousCustomer);
             return new SuccessDataResult<List<CuriousCustomer>>(Messages.Deleted);
         }
+        [SecuredOperation("suser,admin,CuriousCustomer.Update")]
         public IResult Update(CuriousCustomer curiousCustomer)
         {
 

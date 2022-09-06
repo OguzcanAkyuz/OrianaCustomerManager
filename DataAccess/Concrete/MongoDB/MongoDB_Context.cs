@@ -25,7 +25,7 @@ namespace DataAccess.Concrete.Databases.MongoDB
         tryAgain:
             try
             {
-                client = new MongoClient("mongodb://localhost:27017");
+                client = new MongoClient("mongodb://myUserAdmin:123-%2Basd!!@localhost:27017");
                 database = client.GetDatabase("CustomerManager");
                 collection = database.GetCollection<TEntity>(predefinedCollection.CollectionName);
                 return collection;
