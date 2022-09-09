@@ -27,13 +27,10 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<ParticipantManager>().As<IParticipantService>().SingleInstance();
             builder.RegisterType<InvestmentRelationManager>().As<IInvestmentRelationService>().SingleInstance();
             builder.RegisterType<CuriousCustomerManager>().As<ICuriousCustomerService>().SingleInstance();
-
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
-           
-            
-            //*****************************
+            //*******************************************************************************
             builder.RegisterType<MongoDB_CustomersDal>().As<ICustomerDal>().SingleInstance();
             builder.RegisterType<MongoDB_ProductDal>().As<IProductDal>().SingleInstance();
             builder.RegisterType<MongoDB_AbroadInvestmentRelationDal>().As<IAbroadInvestmentRelationDal>().SingleInstance();

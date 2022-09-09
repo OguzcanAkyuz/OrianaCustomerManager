@@ -12,7 +12,7 @@ namespace Entities.Concrete.Meetings
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-       
+        public string Date { get; set; }
         public string CustomerInformation { get; set; }
         public string Participants { get; set; }
 
