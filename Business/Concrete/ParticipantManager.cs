@@ -35,14 +35,16 @@ namespace Business.Concrete
             return new SuccessResult();
         }
         [SecuredOperation("suser,admin,Customer.Update")]
-        public IResult Update(Participant participant)
+        public IResult Update(string participantId)
         {
+            var participant = _participantDal.Get(p => p.Id == participantId);
             _participantDal.Update(participant);
             return new SuccessResult(Messages.Update);
         }
         [SecuredOperation("suser,admin,Customer.Delete")]
-        public IResult Delete(Participant participant)
+        public IResult Delete(string participantId)
         {
+            var participant = _participantDal.Get(p => p.Id == participantId);
             _participantDal.Delete(participant);
             return new SuccessDataResult<List<Participant>>(Messages.Deleted);
         }

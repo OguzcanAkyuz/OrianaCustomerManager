@@ -40,14 +40,16 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("suser,admin,Customer.Update")]
-        public IResult Update(Product product)
+        public IResult Update(string productId)
         {
+            var product = _productDal.Get(p => p.Id == productId);
             _productDal.Update(product);
             return new SuccessResult(Messages.Update);
         }
         [SecuredOperation("suser,admin,Customer.Delete")]
-        public IResult Delete(Product product)
+        public IResult Delete(string productId)
         {
+            var product = _productDal.Get(p => p.Id == productId);
             _productDal.Delete(product);
             return new SuccessDataResult<List<Product>>(Messages.Deleted);
         }

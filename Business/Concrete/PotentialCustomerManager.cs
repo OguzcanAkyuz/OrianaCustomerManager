@@ -45,14 +45,16 @@ namespace Business.Concrete
 
         }
         [SecuredOperation("suser,admin,Customer.Delete")]
-        public IResult Delete(PotentialCustomer potentialCustomer)
+        public IResult Delete(string potentialCustomerId)
         {
+            var potentialCustomer= _potentialCustomer.Get(p=>p.Id==potentialCustomerId);
             _potentialCustomer.Update(potentialCustomer);
             return new SuccessResult(Messages.Deleted);
         }
         [SecuredOperation("suser,admin,Customer.Update")]
-        public IResult Update(PotentialCustomer potentialCustomer)
+        public IResult Update(string potentialCustomerId)
         {
+            var potentialCustomer = _potentialCustomer.Get(p => p.Id == potentialCustomerId);
             _potentialCustomer.Update(potentialCustomer);
             return new SuccessDataResult<List<PotentialCustomer>>(Messages.Update);
         }

@@ -56,19 +56,19 @@ namespace Business.Concrete
 
 
         [SecuredOperation("suser,admin,Customer.Delete")]
-        public IResult Delete(Customer customer)
+        public IResult Delete(string customerId)
         {
-
+            var customer = _customerDal.Get(x => x.Id == customerId);
             _customerDal.Delete(customer);
             return new SuccessDataResult<List<Customer>>(Messages.Deleted);
         }
         [SecuredOperation("suser,admin,Customer.Update")]
-        public IResult Update(Customer customer)
+        public IResult Update(string customerId)
         {
-          
+            var customer = _customerDal.Get(x => x.Id == customerId);
             _customerDal.Update(customer);
 
-            return new SuccessResult(Messages.Update);
+            return new SuccessDataResult<List<Customer>>(Messages.Update);
         }
     }
 }

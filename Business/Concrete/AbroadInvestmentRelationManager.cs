@@ -42,15 +42,17 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("suser,admin,AbroadInvestmentRelation.Get")]
-        public IResult Delete(AbroadInvestmentRelation abroadInvestmentRelation)
+        public IResult Delete(string abroadInvestmentRelationId)
         {
+            var abroadInvestmentRelation = _abroadInvestmentRelationDal.Get(a => a.Id == abroadInvestmentRelationId);
             _abroadInvestmentRelationDal.Delete(abroadInvestmentRelation);
             return new SuccessDataResult<List<AbroadInvestmentRelation>>(Messages.Deleted);
         }
 
         [SecuredOperation("suser,admin,AbroadInvestmentRelation.Update")]
-        public IResult Update(AbroadInvestmentRelation abroadInvestmentRelation)
+        public IResult Update(string abroadInvestmentRelationId)
         {
+            var abroadInvestmentRelation = _abroadInvestmentRelationDal.Get(a => a.Id == abroadInvestmentRelationId);
             _abroadInvestmentRelationDal.Update(abroadInvestmentRelation);
             return new SuccessResult(Messages.Update);
         }

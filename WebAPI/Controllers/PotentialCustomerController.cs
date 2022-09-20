@@ -36,9 +36,9 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpPost("update")]
-        public IActionResult Update(PotentialCustomer potentialCustomer)
+        public IActionResult Update(string potentialCustomerId)
         {
-            var result = _potentialCustomerService.Update(potentialCustomer);
+            var result = _potentialCustomerService.Update(potentialCustomerId);
             if (result.Success)
             {
                 return Ok(result);
@@ -57,9 +57,9 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpPost("delete")]
-        public IActionResult Delete(PotentialCustomer potentialCustomer)
+        public IActionResult Delete(string potentialCustomerId)
         {
-            var result = _potentialCustomerService.Delete(potentialCustomer);
+            var result = _potentialCustomerService.Delete(potentialCustomerId);
             if (result.Success)
             {
                 return Ok(result);

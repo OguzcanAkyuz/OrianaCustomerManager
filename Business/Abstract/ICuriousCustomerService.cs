@@ -15,8 +15,8 @@ namespace Business.Abstract
 
 
         IResult Add(CuriousCustomer curiousCustomer);
-        IResult Update(CuriousCustomer curiousCustomer);
-        IResult Delete(CuriousCustomer curiousCustomer);
+        IResult Update(string id);
+        IResult Delete(string id);
 
     }
 }

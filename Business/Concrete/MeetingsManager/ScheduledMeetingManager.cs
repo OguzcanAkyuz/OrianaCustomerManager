@@ -58,14 +58,16 @@ namespace Business.Concrete.MeetingsManager
         }
 
 
-        public IResult Delete(ScheduledMeeting scheduledMeeting)
+        public IResult Delete(string scheduledMeetingId)
         {
+            var scheduledMeeting = _scheduledMeetingDal.Get(s => s.Id == scheduledMeetingId);
             _scheduledMeetingDal.Delete(scheduledMeeting);
             return new SuccessDataResult<List<ScheduledMeeting>>(Messages.Deleted);
         }
 
-        public IResult Update(ScheduledMeeting scheduledMeeting)
+        public IResult Update(string scheduledMeetingId)
         {
+            var scheduledMeeting = _scheduledMeetingDal.Get(s => s.Id == scheduledMeetingId);
             _scheduledMeetingDal.Update(scheduledMeeting);
             return new SuccessResult(Messages.Update);
         }

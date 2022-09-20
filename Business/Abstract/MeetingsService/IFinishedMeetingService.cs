@@ -9,14 +9,14 @@ namespace Business.Abstract.MeetingsService
     public interface IFinishedMeetingService
     {
         IDataResult<List<FinishedMeeting>> GetAll();
-  
-        IDataResult<List<FinishedMeeting>> GetByFinishedMeetingId(string finishedMeetingId);
+
+        IDataResult<FinishedMeeting> GetByFinishedMeetingId(string finishedMeetingId);
         IDataResult<List<FinishedMeeting>> GetAllParticiPants(string participant);
 
         IResult Add(FinishedMeeting finishedMeeting);
-        IResult Update(FinishedMeeting finishedMeeting);
+        IResult Update(string finishedMeetingId);
 
-        IResult Delete(FinishedMeeting finishedMeeting);
+        IResult Delete(string finishedMeetingId);
 
     }
 }

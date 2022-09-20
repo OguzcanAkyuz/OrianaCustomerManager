@@ -13,9 +13,9 @@ namespace Business.Abstract.MeetingsService
         IDataResult<List<ScheduledMeeting>> GetAllParticiPants(string participant);
 
         IResult Add(ScheduledMeeting scheduledMeetings);
-        IResult Update(ScheduledMeeting scheduledMeeting);
+        IResult Update(string scheduledMeetingId);
 
-        IResult Delete(ScheduledMeeting scheduledMeeting);
-       
+        IResult Delete(string scheduledMeetingId);
+
     }
 }

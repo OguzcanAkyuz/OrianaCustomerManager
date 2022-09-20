@@ -14,8 +14,8 @@ namespace Business.Abstract
         IDataResult<AbroadInvestmentRelation> GetByAbroadInvestmentRelationsId(string abroadInvestmentRelation);
         IDataResult<AbroadInvestmentRelation> GetAllCountry(string country);
         IResult Add(AbroadInvestmentRelation abroadInvestmentRelation);
-        IResult Update(AbroadInvestmentRelation abroadInvestmentRelation);
-        IResult Delete(AbroadInvestmentRelation abroadInvestmentRelation);
+        IResult Update(string id);
+        IResult Delete(string id);
 
 
 

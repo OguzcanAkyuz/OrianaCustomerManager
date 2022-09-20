@@ -15,8 +15,8 @@ namespace Business.Abstract
 
         IResult Add(PotentialCustomer potentialCustomer);
 
-        IResult Update(PotentialCustomer potentialCustomer);
-        IResult Delete(PotentialCustomer potentialCustomer);
+        IResult Update(string id);
+        IResult Delete(string id);
 
 
 

@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
 
         }
         [HttpPost("update")]
-        public IActionResult Update(ScheduledMeeting scheduledMeeting)
+        public IActionResult Update(string scheduledMeetingId)
         {
-            var result = _scheduledMeetingService.Update(scheduledMeeting);
+            var result = _scheduledMeetingService.Update(scheduledMeetingId);
             if (result.Success)
             {
                 return Ok(result);
@@ -52,9 +52,9 @@ namespace WebAPI.Controllers
 
         }
         [HttpPost("delete")]
-        public IActionResult Delete(ScheduledMeeting scheduled)
+        public IActionResult Delete(string scheduledMeetingId)
         {
-            var result = _scheduledMeetingService.Delete(scheduled);
+            var result = _scheduledMeetingService.Delete(scheduledMeetingId);
             if (result.Success)
             {
                 return Ok(result);

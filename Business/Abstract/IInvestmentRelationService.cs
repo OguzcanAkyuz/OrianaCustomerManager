@@ -15,7 +15,7 @@ namespace Business.Abstract
 
 
         IResult Add(InvestmentRelation ınvestmentRelation);
-        IResult Update(InvestmentRelation ınvestmentRelation);
-        IResult Delete(InvestmentRelation ınvestmentRelation);
+        IResult Update(string id);
+        IResult Delete(string id);
     }
 }

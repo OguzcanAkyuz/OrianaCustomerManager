@@ -45,14 +45,16 @@ namespace Business.Concrete
             return new SuccessDataResult<InvestmentRelation>(_ınvestmentRelationDal.Get(ır => ır.Id == ınvestmentRelationId));
         }
         [SecuredOperation("suser,admin,Customer.Update")]
-        public IResult Update(InvestmentRelation ınvestmentRelation)
+        public IResult Update(string ınvestmentRelationId)
         {
+            var ınvestmentRelation = _ınvestmentRelationDal.Get(i => i.Id == ınvestmentRelationId);
             _ınvestmentRelationDal.Update(ınvestmentRelation);
             return new SuccessResult(Messages.Update);
         }
         [SecuredOperation("suser,admin,Customer.Delete")]
-        public IResult Delete(InvestmentRelation ınvestmentRelation)
+        public IResult Delete(string ınvestmentRelationId)
         {
+            var ınvestmentRelation = _ınvestmentRelationDal.Get(i => i.Id == ınvestmentRelationId);
             _ınvestmentRelationDal.Delete(ınvestmentRelation);
             return new SuccessDataResult<List<InvestmentRelation>>(Messages.Deleted);
         }

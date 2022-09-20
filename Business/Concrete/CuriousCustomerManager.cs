@@ -42,15 +42,16 @@ namespace Business.Concrete
             return new SuccessDataResult<CuriousCustomer>(_curiousCustomerDal.Get(cp => cp.Id == curiousCustomerId));
         }
         [SecuredOperation("suser,admin,CuriousCustomer.Delete")]
-        public IResult Delete(CuriousCustomer curiousCustomer)
+        public IResult Delete(string curiousCustomerId)
         {
+            var curiousCustomer = _curiousCustomerDal.Get(c => c.Id == curiousCustomerId);
             _curiousCustomerDal.Delete(curiousCustomer);
             return new SuccessDataResult<List<CuriousCustomer>>(Messages.Deleted);
         }
         [SecuredOperation("suser,admin,CuriousCustomer.Update")]
-        public IResult Update(CuriousCustomer curiousCustomer)
+        public IResult Update(string curiousCustomerId)
         {
-
+            var curiousCustomer = _curiousCustomerDal.Get(c => c.Id == curiousCustomerId);
             _curiousCustomerDal.Update(curiousCustomer);
             return new SuccessResult(Messages.Update);
         }

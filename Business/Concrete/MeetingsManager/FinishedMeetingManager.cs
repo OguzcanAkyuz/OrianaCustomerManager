@@ -40,18 +40,21 @@ namespace Business.Concrete.MeetingsManager
             return new SuccessDataResult<List<FinishedMeeting>>(_finishedMeetingDal.GetAll(f => f.Id == participantId));
         }
 
-        public IDataResult<List<FinishedMeeting>> GetByFinishedMeetingId(string finishedMeetingId)
+        public IDataResult<FinishedMeeting> GetByFinishedMeetingId(string finishedMeetingId)
         {
-            return new SuccessDataResult<List<FinishedMeeting>>(_finishedMeetingDal.GetAll(f => f.Id == finishedMeetingId));
+            return new SuccessDataResult<FinishedMeeting>(_finishedMeetingDal.Get(f => f.Id == finishedMeetingId));
         }
    
-        public IResult Delete(FinishedMeeting finishedMeeting)
+        public IResult Delete(string finishedMeetingId)
         {
+            var finishedMeeting = _finishedMeetingDal.Get(f => f.Id == finishedMeetingId);
             _finishedMeetingDal.Delete(finishedMeeting);
             return new SuccessDataResult<List<FinishedMeeting>>(Messages.Deleted);
         }
-        public IResult Update(FinishedMeeting finishedMeeting)
-        {
+        public IResult Update(string finishedMeetingId)
+        {   
+            var finishedMeeting=_finishedMeetingDal.Get(f => f.Id == finishedMeetingId);
+            
             _finishedMeetingDal.Update(finishedMeeting);
             return new SuccessResult(Messages.Update);
         }

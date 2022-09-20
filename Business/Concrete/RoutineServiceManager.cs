@@ -44,8 +44,9 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("suser,admin,Customer.Update")]
-        public IResult Update(RoutineService routineService)
+        public IResult Update(string routineServiceId)
         {
+            var routineService = _routineServiceDal.Get(r => r.Id == routineServiceId);
             _routineServiceDal.Update(routineService);
             return new SuccessResult(Messages.SuccesResult);
         }
@@ -57,8 +58,9 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("suser,admin,Customer.Delete")]
-        public IResult Delete(RoutineService routineService)
+        public IResult Delete(string routineServiceId)
         {
+            var routineService= _routineServiceDal.Get(r => r.Id == routineServiceId);
             _routineServiceDal.Delete(routineService);
             return new SuccessDataResult<List<RoutineService>>(Messages.Deleted);
 
