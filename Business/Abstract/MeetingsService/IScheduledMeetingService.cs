@@ -13,7 +13,7 @@ namespace Business.Abstract.MeetingsService
         IDataResult<List<ScheduledMeeting>> GetAllParticiPants(string participant);
 
         IResult Add(ScheduledMeeting scheduledMeetings);
-        IResult Update(string scheduledMeetingId);
+        IResult Update(ScheduledMeeting scheduledMeeting);
 
         IResult Delete(string scheduledMeetingId);
 

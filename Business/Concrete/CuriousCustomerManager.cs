@@ -49,9 +49,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CuriousCustomer>>(Messages.Deleted);
         }
         [SecuredOperation("suser,admin,CuriousCustomer.Update")]
-        public IResult Update(string curiousCustomerId)
+        public IResult Update(CuriousCustomer curiousCustomer)
         {
-            var curiousCustomer = _curiousCustomerDal.Get(c => c.Id == curiousCustomerId);
+        
             _curiousCustomerDal.Update(curiousCustomer);
             return new SuccessResult(Messages.Update);
         }

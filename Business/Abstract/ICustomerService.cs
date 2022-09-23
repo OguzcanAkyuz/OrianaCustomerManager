@@ -14,7 +14,7 @@ namespace Business.Abstract
         IDataResult<List<Customer>> GetAllCompanyBusinessArea(string companyBusinessArea);
         IDataResult<Customer> GetByCustomerId(string customerId);
         IResult Add(Customer customer);
-        IResult Update(string id);
+        IResult Update(Customer customer);
         IResult Delete(string id);
     }
 }

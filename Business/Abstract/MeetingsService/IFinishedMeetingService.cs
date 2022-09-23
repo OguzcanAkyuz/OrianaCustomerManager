@@ -14,7 +14,7 @@ namespace Business.Abstract.MeetingsService
         IDataResult<List<FinishedMeeting>> GetAllParticiPants(string participant);
 
         IResult Add(FinishedMeeting finishedMeeting);
-        IResult Update(string finishedMeetingId);
+        IResult Update(FinishedMeeting finishedMeeting);
 
         IResult Delete(string finishedMeetingId);
 

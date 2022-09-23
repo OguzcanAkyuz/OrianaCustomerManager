@@ -14,48 +14,48 @@ namespace Business.Concrete
 {
     public class InvestmentRelationManager : IInvestmentRelationService
     {
-        private readonly IInvestmentRelationDal _ınvestmentRelationDal;
+        private readonly IInvestmentRelationDal _investmentRelationDal;
 
-        public InvestmentRelationManager(IInvestmentRelationDal ınvestmentRelationDal)
+        public InvestmentRelationManager(IInvestmentRelationDal investmentRelationDal)
         {
-            _ınvestmentRelationDal = ınvestmentRelationDal;
+            _investmentRelationDal = investmentRelationDal;
         }
         [SecuredOperation("suser,admin,Customer.Add")]
-        public IResult Add(InvestmentRelation ınvestmentRelation)
+        public IResult Add(InvestmentRelation investmentRelation)
         {
-           
-            _ınvestmentRelationDal.Add(ınvestmentRelation);
+
+            _investmentRelationDal.Add(investmentRelation);
             return new SuccessResult(Messages.InvestmentRelationsSuccess);
         }
         [SecuredOperation("suser,admin,Customer.Get")]
         public IDataResult<List<InvestmentRelation>> GetAll()
         {
-            return new SuccessDataResult<List<InvestmentRelation>>(_ınvestmentRelationDal.GetAll(), Messages.InvestmentRelationsListed);
+            return new SuccessDataResult<List<InvestmentRelation>>(_investmentRelationDal.GetAll(), Messages.InvestmentRelationsListed);
 
         }
 
         [SecuredOperation("suser,admin,Customer.Get")]
         public IDataResult<List<InvestmentRelation>> GetAllByInvestmentRelationId(string Id)
         {
-            return new SuccessDataResult<List<InvestmentRelation>>(_ınvestmentRelationDal.GetAll(ır => ır.Id == Id));
+            return new SuccessDataResult<List<InvestmentRelation>>(_investmentRelationDal.GetAll(ır => ır.Id == Id));
         }
         [SecuredOperation("suser,admin,Customer.Get")]
-        public IDataResult<InvestmentRelation> GetByInvestmentRelationId(string ınvestmentRelationId)
+        public IDataResult<InvestmentRelation> GetByInvestmentRelationId(string investmentRelationId)
         {
-            return new SuccessDataResult<InvestmentRelation>(_ınvestmentRelationDal.Get(ır => ır.Id == ınvestmentRelationId));
+            return new SuccessDataResult<InvestmentRelation>(_investmentRelationDal.Get(ır => ır.Id == investmentRelationId));
         }
         [SecuredOperation("suser,admin,Customer.Update")]
-        public IResult Update(string ınvestmentRelationId)
+        public IResult Update(InvestmentRelation investmentRelation)
         {
-            var ınvestmentRelation = _ınvestmentRelationDal.Get(i => i.Id == ınvestmentRelationId);
-            _ınvestmentRelationDal.Update(ınvestmentRelation);
+         
+            _investmentRelationDal.Update(investmentRelation);
             return new SuccessResult(Messages.Update);
         }
         [SecuredOperation("suser,admin,Customer.Delete")]
-        public IResult Delete(string ınvestmentRelationId)
+        public IResult Delete(string investmentRelationId)
         {
-            var ınvestmentRelation = _ınvestmentRelationDal.Get(i => i.Id == ınvestmentRelationId);
-            _ınvestmentRelationDal.Delete(ınvestmentRelation);
+            var investmentRelation = _investmentRelationDal.Get(i => i.Id == investmentRelationId);
+            _investmentRelationDal.Delete(investmentRelation);
             return new SuccessDataResult<List<InvestmentRelation>>(Messages.Deleted);
         }
 

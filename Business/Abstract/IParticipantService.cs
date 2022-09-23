@@ -12,7 +12,7 @@ namespace Business.Abstract
 
         IDataResult<Participant> GetByParticipantId(string id);
         IResult Add(Participant participant);
-        IResult Update(string id);
+        IResult Update(Participant participant);
         IResult Delete(string id);
     }
 }

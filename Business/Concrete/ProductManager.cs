@@ -40,9 +40,9 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("suser,admin,Customer.Update")]
-        public IResult Update(string productId)
+        public IResult Update(Product product)
         {
-            var product = _productDal.Get(p => p.Id == productId);
+           
             _productDal.Update(product);
             return new SuccessResult(Messages.Update);
         }

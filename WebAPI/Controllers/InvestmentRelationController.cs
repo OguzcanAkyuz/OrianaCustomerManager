@@ -8,17 +8,17 @@ namespace WebAPI.Controllers
     [ApiController]
     public class InvestmentRelationController : ControllerBase
     {
-        private readonly IInvestmentRelationService _ınvestmentRelationService;
+        private readonly IInvestmentRelationService _investmentRelationService;
 
-        public InvestmentRelationController(IInvestmentRelationService ınvestmentRelationService)
+        public InvestmentRelationController(IInvestmentRelationService investmentRelationService)
         {
-            _ınvestmentRelationService = ınvestmentRelationService;
+            _investmentRelationService = investmentRelationService;
         }
 
         [HttpGet("getbyid")]
-        public IActionResult GetById(string ınvestmentRelationıd)
+        public IActionResult GetById(string investmentRelationId)
         {
-            var result = _ınvestmentRelationService.GetByInvestmentRelationId(ınvestmentRelationıd);
+            var result = _investmentRelationService.GetByInvestmentRelationId(investmentRelationId);
             if (result.Success)
             {
                 return Ok(result);
@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _ınvestmentRelationService.GetAll();
+            var result = _investmentRelationService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -37,19 +37,19 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpPost("Add")]
-        public IActionResult Add(InvestmentRelation ınvestmentRelation)
+        public IActionResult Add(InvestmentRelation investmentRelation)
         {
-            var result = _ınvestmentRelationService.Add(ınvestmentRelation);
+            var result = _investmentRelationService.Add(investmentRelation);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-        [HttpPost("delete")]
-        public IActionResult Delete(string ınvestmentRelationId)
+        [HttpGet("delete")]
+        public IActionResult Delete(string investmentRelationId)
         {
-            var result = _ınvestmentRelationService.Delete(ınvestmentRelationId);
+            var result = _investmentRelationService.Delete(investmentRelationId);
             if (result.Success)
             {
                 return Ok(result);
@@ -57,9 +57,9 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpPost("update")]
-        public IActionResult Update(string ınvestmentRelationId)
+        public IActionResult Update(InvestmentRelation investmentRelation)
         {
-            var result = _ınvestmentRelationService.Update(ınvestmentRelationId);
+            var result = _investmentRelationService.Update(investmentRelation);
             if (result.Success)
             {
                 return Ok(result);

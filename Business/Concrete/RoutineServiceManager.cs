@@ -24,7 +24,7 @@ namespace Business.Concrete
         [SecuredOperation("suser,admin,Customer.Get")]
         public IDataResult<List<RoutineService>> GetAll()
         {
-            return new SuccessDataResult<List<RoutineService>>(_routineServiceDal.GetAll(), Messages.RoutineServicesListed); //parantez içini araştır
+            return new SuccessDataResult<List<RoutineService>>(_routineServiceDal.GetAll(), Messages.RoutineServicesListed);
 
         }
         [SecuredOperation("suser,admin,Customer.Get")]
@@ -44,9 +44,9 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("suser,admin,Customer.Update")]
-        public IResult Update(string routineServiceId)
+        public IResult Update(RoutineService routineService)
         {
-            var routineService = _routineServiceDal.Get(r => r.Id == routineServiceId);
+          
             _routineServiceDal.Update(routineService);
             return new SuccessResult(Messages.SuccesResult);
         }

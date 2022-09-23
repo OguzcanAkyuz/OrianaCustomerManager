@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(string customerId)
+        public IActionResult Update(Customer customer)
         {
-            var result = _customerService.Update(customerId);
+            var result = _customerService.Update(customer);
             if (result.Success)
             {
                 return Ok(result);

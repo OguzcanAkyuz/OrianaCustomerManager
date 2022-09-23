@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
 
         }
         [HttpPost("update")]
-        public IActionResult Update(string scheduledMeetingId)
+        public IActionResult Update(ScheduledMeeting scheduledMeeting)
         {
-            var result = _scheduledMeetingService.Update(scheduledMeetingId);
+            var result = _scheduledMeetingService.Update(scheduledMeeting);
             if (result.Success)
             {
                 return Ok(result);
@@ -51,7 +51,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
-        [HttpPost("delete")]
+        [HttpGet("delete")]
         public IActionResult Delete(string scheduledMeetingId)
         {
             var result = _scheduledMeetingService.Delete(scheduledMeetingId);

@@ -35,9 +35,9 @@ namespace Business.Concrete
             return new SuccessResult();
         }
         [SecuredOperation("suser,admin,Customer.Update")]
-        public IResult Update(string participantId)
+        public IResult Update(Participant participant)
         {
-            var participant = _participantDal.Get(p => p.Id == participantId);
+       
             _participantDal.Update(participant);
             return new SuccessResult(Messages.Update);
         }

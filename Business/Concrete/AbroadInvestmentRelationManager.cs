@@ -50,9 +50,9 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("suser,admin,AbroadInvestmentRelation.Update")]
-        public IResult Update(string abroadInvestmentRelationId)
+        public IResult Update(AbroadInvestmentRelation abroadInvestmentRelation)
         {
-            var abroadInvestmentRelation = _abroadInvestmentRelationDal.Get(a => a.Id == abroadInvestmentRelationId);
+          
             _abroadInvestmentRelationDal.Update(abroadInvestmentRelation);
             return new SuccessResult(Messages.Update);
         }

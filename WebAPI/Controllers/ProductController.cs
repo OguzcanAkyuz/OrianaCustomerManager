@@ -38,9 +38,9 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpPost("update")]
-        public IActionResult Update(string productId)
+        public IActionResult Update(Product product)
         {
-            var result = _productService.Update(productId);
+            var result = _productService.Update(product);
             if (result.Success)
             {
                 return Ok(result);
@@ -58,7 +58,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
-        [HttpPost("delete")]
+        [HttpGet("delete")]
         public IActionResult Delete(string productId)
         {
             var result = _productService.Delete(productId);

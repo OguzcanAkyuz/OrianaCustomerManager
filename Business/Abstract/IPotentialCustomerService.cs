@@ -9,13 +9,13 @@ namespace Business.Abstract
     public interface IPotentialCustomerService
     {
         IDataResult<List<PotentialCustomer>> GetAll();
-        IDataResult<List<PotentialCustomer>> GetAllByPotentialCustomerId(string potentialCustomerId);
+       
         IDataResult<PotentialCustomer> GetByPotentialCustomerId(string potentialCustomerId);
 
 
         IResult Add(PotentialCustomer potentialCustomer);
 
-        IResult Update(string id);
+        IResult Update(PotentialCustomer potentialCustomer);
         IResult Delete(string id);
 
 

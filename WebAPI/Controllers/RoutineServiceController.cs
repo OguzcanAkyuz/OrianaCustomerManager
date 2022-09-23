@@ -40,9 +40,9 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpPost("update")]
-        public IActionResult Update(string routineServiceId)
+        public IActionResult Update(RoutineService routineService)
         {
-            var result = _routineServiceService.Update(routineServiceId);
+            var result = _routineServiceService.Update(routineService);
             if (result.Success)
             {
                 return Ok(result);
@@ -50,7 +50,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
-        [HttpPost("delete")]
+        [HttpGet("delete")]
         public IActionResult Delete(string routineServiceId)
         {
             var result = _routineServiceService.Delete(routineServiceId);

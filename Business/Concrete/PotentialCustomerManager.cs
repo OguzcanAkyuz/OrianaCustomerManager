@@ -25,11 +25,7 @@ namespace Business.Concrete
         {
            return new SuccessDataResult<List<PotentialCustomer>>(_potentialCustomer.GetAll(),Messages.PotentialCustomersList);
         }
-        [SecuredOperation("suser,admin,Customer.Get")]
-        public IDataResult<List<PotentialCustomer>> GetAllByPotentialCustomerId(string Id)
-        {
-            return new SuccessDataResult<List<PotentialCustomer>>(_potentialCustomer.GetAll(pc => pc.Id == Id));
-        }
+       
         [SecuredOperation("suser,admin,Customer.Get")]
         public IDataResult<PotentialCustomer> GetByPotentialCustomerId(string potentialCustomerId)
         {
@@ -48,13 +44,12 @@ namespace Business.Concrete
         public IResult Delete(string potentialCustomerId)
         {
             var potentialCustomer= _potentialCustomer.Get(p=>p.Id==potentialCustomerId);
-            _potentialCustomer.Update(potentialCustomer);
+            _potentialCustomer.Delete(potentialCustomer);
             return new SuccessResult(Messages.Deleted);
         }
         [SecuredOperation("suser,admin,Customer.Update")]
-        public IResult Update(string potentialCustomerId)
+        public IResult Update(PotentialCustomer potentialCustomer)
         {
-            var potentialCustomer = _potentialCustomer.Get(p => p.Id == potentialCustomerId);
             _potentialCustomer.Update(potentialCustomer);
             return new SuccessDataResult<List<PotentialCustomer>>(Messages.Update);
         }

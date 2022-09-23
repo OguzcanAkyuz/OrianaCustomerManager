@@ -15,7 +15,7 @@ namespace Business.Abstract
 
         IResult Add(RoutineService routineServices);
         IResult Delete(string routineServiceId);
-        IResult Update(string routineServiceId);
+        IResult Update(RoutineService routineServices);
 
     }
 }

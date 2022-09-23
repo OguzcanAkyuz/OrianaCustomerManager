@@ -11,11 +11,11 @@ namespace Business.Abstract
 
         IDataResult<List<InvestmentRelation>> GetAll();
         IDataResult<List<InvestmentRelation>> GetAllByInvestmentRelationId(string Id);
-        IDataResult<InvestmentRelation> GetByInvestmentRelationId(string ınvestmentRelationId);
+        IDataResult<InvestmentRelation> GetByInvestmentRelationId(string investmentRelationId);
 
 
-        IResult Add(InvestmentRelation ınvestmentRelation);
-        IResult Update(string id);
+        IResult Add(InvestmentRelation InvestmentRelation);
+        IResult Update(InvestmentRelation InvestmentRelation);
         IResult Delete(string id);
     }
 }

@@ -65,9 +65,9 @@ namespace Business.Concrete.MeetingsManager
             return new SuccessDataResult<List<ScheduledMeeting>>(Messages.Deleted);
         }
 
-        public IResult Update(string scheduledMeetingId)
+        public IResult Update(ScheduledMeeting scheduledMeeting)
         {
-            var scheduledMeeting = _scheduledMeetingDal.Get(s => s.Id == scheduledMeetingId);
+       
             _scheduledMeetingDal.Update(scheduledMeeting);
             return new SuccessResult(Messages.Update);
         }
