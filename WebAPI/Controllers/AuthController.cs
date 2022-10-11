@@ -1,4 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Abstract.MeetingsService;
+using DataAccess.Abstract;
+using Entities.Concrete;
 using Entities.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +12,12 @@ namespace WebAPI.Controllers
     public class AuthController : ControllerBase
     {
         private IAuthService _authService;
+       
 
         public AuthController(IAuthService authService)
         {
             _authService = authService;
+
         }
 
         [HttpPost("login")]
@@ -51,5 +56,7 @@ namespace WebAPI.Controllers
 
             return BadRequest(result.Message);
         }
+     
+
     }
 }
