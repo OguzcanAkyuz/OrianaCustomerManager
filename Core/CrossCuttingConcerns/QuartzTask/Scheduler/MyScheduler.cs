@@ -18,9 +18,6 @@ namespace Core.CrossCuttingConcerns.QuartzTask.JobFactory
         private StdSchedulerFactory _factory = new StdSchedulerFactory();
     
         
-
-
-
         public MyScheduler(IScheduler scheduler,IJobFactory jobFactory,ISchedulerFactory schedulerFactory)
         {
             
@@ -30,7 +27,7 @@ namespace Core.CrossCuttingConcerns.QuartzTask.JobFactory
 
         public async System.Threading.Tasks.Task StartAsync(CancellationToken cancellationToken)
         {
-            Scheduler = await _schedulerFactory.GetScheduler();
+            Scheduler = await _schedulerFactory.GetScheduler(); //Zamanlayıcı oluşturduk
             Scheduler.JobFactory = _jobFactory;
             await Scheduler.Start(cancellationToken);
             await System.Threading.Tasks.Task.CompletedTask;
