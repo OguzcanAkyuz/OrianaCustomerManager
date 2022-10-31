@@ -1,4 +1,4 @@
-﻿using Abp.Domain.Entities;
+﻿
 using Core.DataAccess.Databases.MongoDB;
 using Core.Entities.Concrete;
 using DataAccess.Abstract;

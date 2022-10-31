@@ -1,4 +1,4 @@
-﻿using Abp.Domain.Entities;
+﻿
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 using System;

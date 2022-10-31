@@ -1,4 +1,4 @@
-﻿using Abp.Domain.Entities;
+﻿
 using Core.DataAccess.Databases;
 using Core.Entities.Concrete;
 

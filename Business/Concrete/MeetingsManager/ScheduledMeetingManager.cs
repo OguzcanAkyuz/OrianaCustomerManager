@@ -16,10 +16,14 @@ using System.Text;
 
 namespace Business.Concrete.MeetingsManager
 {
+
+
     public class ScheduledMeetingManager : IScheduledMeetingService
     {   
         private readonly IScheduledMeetingDal _scheduledMeetingDal;
         private readonly IParticipantService _participantDal;
+       
+
        
 
         public ScheduledMeetingManager(IScheduledMeetingDal scheduledMeetingDal,IParticipantService participantService)
@@ -72,6 +76,18 @@ namespace Business.Concrete.MeetingsManager
             return new SuccessResult(Messages.Update);
         }
 
-       
+        public IDataResult<List<ScheduledMeeting>> GetByScheduledMeetingDate(string scheduledMeetingDate)
+        {
+            try
+            {
+                return new SuccessDataResult<List<ScheduledMeeting>>(_scheduledMeetingDal.GetAll(s => s.MeetingDate == scheduledMeetingDate));
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+           
+        }
     }
 }
