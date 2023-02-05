@@ -62,12 +62,6 @@ namespace WebAPI
                 });
 
 
-            //services.AddSingleton<IJobFactory, MyJobFactory > ();
-            //services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
-            //services.AddSingleton<NotificationJob>();
-            //services.AddHostedService<MyScheduler>();
-
-
         }
 
 
